@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import apikey from '../apikey';
 import axios from 'axios';
 import MovieList from './MovieList';
+
+const language = 'en-us';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +11,20 @@ class App extends Component {
     this.state = {
       searchTerm: '',
       movieListResponse: [],
+      genres: [],
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    axios({
+      method: 'get',
+      url:'https://api.themoviedb.org/3/genre/movie/list?api_key=' + apikey +'&language=' + language,
+
+    }).then((response) => {
+      this.setState({genres: response.data})
+    });
   }
 
   handleSearchBarChange(e) {
@@ -22,14 +35,11 @@ class App extends Component {
     e.preventDefault();
     axios({
       method:'get',
-
-      url:'https://api.themoviedb.org/3/search/movie?api_key=' + 
-      apikey + 
-      '&language=en-US&query=' + 
-      this.state.searchTerm + 
+      url:'https://api.themoviedb.org/3/search/movie?api_key=' + apikey + 
+      '&language=' + language +
+      '&query=' + this.state.searchTerm + 
       '&page=1&include_adult=true',
-    })
-      .then((response) => {
+    }).then((response) => {
         this.setState({movieListResponse: response.data.results});
       });
   }
@@ -42,7 +52,7 @@ class App extends Component {
           <input className="searchbar" 
             onChange={(event) => this.handleSearchBarChange(event)}></input>
         </form>
-        <MovieList list={this.state.movieListResponse}/>      
+        <MovieList list={this.state.movieListResponse} genres={this.state.genres}/>      
       </div>
     )
   }
