@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import MovieListItem from './MovieListItem';
 
 function MovieList(props) {
-  const list = props.list.map(movie => (
+  const filteredList = props.list.filter(movie => movie.poster_path);
+  const finalList = filteredList.map(movie => (
     <li key={movie.id}>
       <div className="moviesListItem-wrapper">
-        {movie.poster_path && (
-          <MovieListItem movie={movie} genres={props.genres} />
-        )}
+        <MovieListItem movie={movie} genres={props.genres} />
       </div>
     </li>
   ));
 
   return (
-    <ol>{list}</ol>
+    <ol>{finalList}</ol>
   );
 }
 
