@@ -1,36 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const posterUrl = 'http://image.tmdb.org/t/p/w185';
+import MovieListItem from './MovieListItem';
 
 function MovieList(props) {
   const list = props.list.map(movie => (
     <li key={movie.id}>
-      {movie.poster_path && (
-        <div>
-          <img
-            className="movie-poster"
-            src={posterUrl + movie.poster_path}
-            alt="movie_poster"
-          />
-          <p className="movie-title">{movie.title}</p>
-        </div>
-      )}
-      <ul className="movie-genres-list">
-        {movie.genre_ids.map((id) => {
-          if (props.genres.genres[id]) {
-            return (
-              <li
-                key={id}
-                className="movie-genres-list-item"
-              >
-                {props.genres.genres[id].name}
-              </li>
-            );
-          }
-          return null;
-        })}
-      </ul>
+      <div className="moviesListItem-wrapper">
+        {movie.poster_path && (
+        <MovieListItem movie={movie} genres={props.genres.genres} />
+        )}
+      </div>
     </li>
   ));
 
@@ -41,6 +20,7 @@ function MovieList(props) {
 
 MovieList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieList;

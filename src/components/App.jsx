@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router } from 'react-router-dom';
 import apikey from '../apikey';
 import MovieList from './MovieList';
 
@@ -42,16 +43,18 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>movie-finder</h1>
-        <form onSubmit={event => this.handleSubmit(event)}>
-          <input
-            className="searchbar"
-            onChange={event => this.handleSearchBarChange(event)}
-          />
-        </form>
-        <MovieList list={this.state.movieListResponse} genres={this.state.genres} />
-      </div>
+      <Router>
+        <div>
+          <h1>movie-finder</h1>
+          <form onSubmit={event => this.handleSubmit(event)}>
+            <input
+              className="searchbar"
+              onChange={event => this.handleSearchBarChange(event)}
+            />
+          </form>
+          <MovieList list={this.state.movieListResponse} genres={this.state.genres} />
+        </div>
+      </Router>
     );
   }
 }
