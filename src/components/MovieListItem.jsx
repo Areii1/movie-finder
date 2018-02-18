@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const posterUrl = 'http://image.tmdb.org/t/p/w185';
 
@@ -19,6 +20,7 @@ function MovieListItem(props) {
   });
 
   const listItem = (
+
     <div>
       <div>
         <img
@@ -26,12 +28,13 @@ function MovieListItem(props) {
           src={posterUrl + props.movie.poster_path}
           alt="movie_poster"
         />
-        <p className="movie-title">{props.movie.title}</p>
+        <Link to={`/movieview/${props.movie.id}`}>{props.movie.title}</Link>
       </div>
       <ul className="movie-genres-list">
         {genresList}
       </ul>
     </div>
+
   );
 
   return (
