@@ -45,7 +45,12 @@ function MovieListItem(props) {
 }
 
 MovieListItem.propTypes = {
-  movie: PropTypes.objectOf({}).isRequired,
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    id: PropTypes.number,
+    title: PropTypes.string,
+  }).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

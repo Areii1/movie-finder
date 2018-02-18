@@ -22,7 +22,7 @@ class MainView extends Component {
       method: 'get',
       url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=${language}`,
     }).then((response) => {
-      this.setState({ genres: response.data });
+      this.setState({ genres: response.data.genres });
     });
   }
 

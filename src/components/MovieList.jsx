@@ -7,7 +7,7 @@ function MovieList(props) {
     <li key={movie.id}>
       <div className="moviesListItem-wrapper">
         {movie.poster_path && (
-        <MovieListItem movie={movie} genres={props.genres.genres} />
+          <MovieListItem movie={movie} genres={props.genres} />
         )}
       </div>
     </li>
