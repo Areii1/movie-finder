@@ -3,15 +3,11 @@ body {
 	background-color: rgb(31,59,113);
 }
 
-.content-wrapper {
-	margin: 40px;
-}
-
 .img-section-text-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-content: space-between;
-	padding: 150px;
+	padding: 100px;
 	color: white;
 	font-size: 2.5em;
 	font-weight: bold;
@@ -25,25 +21,27 @@ body {
 	background-size: cover;
 }
 
-.img-section-wrapper:before {
+.img-section-gradient {
   content: '';
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-image: linear-gradient(to right, rgb(31,59,113), white);
-	opacity: 0.4; 
+	background: linear-gradient(to right, rgba(31,59,113, 0.9), rgba(250, 250, 250, 0.5));
 }
 
 .text-content-wrapper {
 	display: flex;
-	/* flex-direction: row; */
 	flex-wrap: wrap;
-	padding: 20px 150px;
+	padding: 20px 100px;
 	background-color: white;
 	color: black;
 	margin: 0;
+}
+
+.text-content-wrapper > * {
+	margin: 0 30px;
 }
 
 .movie-overview {
@@ -55,6 +53,5 @@ body {
 }
 
 .poster {
-	height: 200px;
-	width: 200px;
+	height: 300px;
 }
