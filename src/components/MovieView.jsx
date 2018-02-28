@@ -32,7 +32,7 @@ class MovieView extends Component {
       <div>
         { this.state.movieDetails ?
           <div className="content-wrapper">
-            <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}> 
+            <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-text-wrapper">
                 <p className="movie-title">
                   {this.state.movieDetails.title}
@@ -44,7 +44,8 @@ class MovieView extends Component {
               </div>
             </div>
             <div className="text-content-wrapper">
-              <p> {this.state.movieDetails.overview} </p>
+              <p className="movie-overview"> {this.state.movieDetails.overview} </p>
+              <div className="poster" style={{ background: `url(${backdropUrl + this.state.movieDetails.poster_path}) center/cover no-repeat` }} />
               <Link to="/">back to the main page </Link>
             </div>
           </div>
