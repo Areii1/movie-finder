@@ -32,16 +32,24 @@ class MovieView extends Component {
       <div>
         { this.state.movieDetails ?
           <div className="content-wrapper">
-            <div className="header-img" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }} />
+            <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}> 
+              <div className="img-section-text-wrapper">
+                <p className="movie-title">
+                  {this.state.movieDetails.title}
+                </p>
+                <p className="movie-release-date">
+                  Release date:
+                  {this.state.movieDetails.release_date}
+                </p>
+              </div>
+            </div>
             <div className="text-content-wrapper">
-              <p className="movie-description">
-                {this.state.movieDetails.overview}
-              </p>
+              <p> {this.state.movieDetails.overview} </p>
+              <Link to="/">back to the main page </Link>
             </div>
           </div>
         : (<p>...</p>)
         }
-        <Link to="/">back to the main page </Link>
       </div>
     );
   }

@@ -1,23 +1,45 @@
-
-
 body {
-  margin: 0;
+	margin: 0;
+	background-color: rgb(31,59,113);
 }
 
-.header-img {
+.content-wrapper {
+	margin: 40px;
+}
+
+.img-section-text-wrapper {
+	padding: 200px;
+	color: white;
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+.img-section-wrapper {
   position: relative;
   width: 100%;
   height: 700px;
-  background-size: cover;
+	background-size: cover;
 }
 
-.header-img:before {
+.img-section-wrapper:before {
   content: '';
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-image: linear-gradient(to right, lightblue, white);
-	opacity: .6; 
+	background-image: linear-gradient(to right, rgb(31,59,113), white);
+	opacity: .3; 
+}
+
+.text-content-wrapper {
+	padding: 20px 200px;
+	background-color: white;
+	color: black;
+	margin: 0;
+}
+
+.movie-release-date {
+	font-size: 0.5em;
+	padding: 300px 0;
 }
