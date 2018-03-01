@@ -1,18 +1,12 @@
 body {
 	margin: 0;
-	background-color: rgb(31,59,113);
+	background-color: white;
 }
 
-.img-section-text-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-content: space-between;
-	padding: 100px;
-	color: white;
-	font-size: 2.5em;
-	font-weight: bold;
+.content-container {
+	margin: 0 auto;
+	max-width: 900px;
 }
-
 
 .img-section-wrapper {
   position: relative;
@@ -44,12 +38,27 @@ body {
 	margin: 0 30px;
 }
 
-.movie-overview {
-	width: 60%;
+.movie-title {
+	font-size: 2em;
+	color: white;
+}
+
+.movie-release-date-label {
+	position: absolute;
+	bottom: 40px;
+	font-size: 1.5em;
+	color: white;
 }
 
 .movie-release-date {
-	font-size: 0.5em;
+	position: absolute;
+	bottom: 10px;
+	font-size: 1.5em;
+	color: white;
+}
+
+.movie-overview {
+	width: 60%;
 }
 
 .poster {
