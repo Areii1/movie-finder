@@ -49,7 +49,11 @@ class MovieView extends Component {
             </div>
             <div className="content-container">
               <p className="movie-overview"> {this.state.movieDetails.overview} </p>
-              <img className="poster" src={backdropUrl + this.state.movieDetails.poster_path} alt="Movie poster" />
+              <img
+                className="poster"
+                src={backdropUrl + this.state.movieDetails.poster_path}
+                alt="Movie poster"
+              />
               <Link to="/">back to the main page </Link>
             </div>
           </div>

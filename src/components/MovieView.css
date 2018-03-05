@@ -8,6 +8,8 @@ body {
 .content-container {
 	margin: 0 auto;
 	max-width: 900px;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .img-section-wrapper {
@@ -66,4 +68,7 @@ body {
 
 .poster {
 	height: 300px;
+	padding: 0 50px;
+	margin-top: -80px;
+	z-index: 0;
 }
