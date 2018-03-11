@@ -22,7 +22,7 @@ class MovieView extends Component {
     const movieId = this.props.match.params.id;
     axios({
       method: 'get',
-      url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=${language}`,
+      url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&append_to_response=videos`,
     }).then((response) => {
       this.setState({ movieDetails: response.data });
     });
@@ -63,8 +63,7 @@ class MovieView extends Component {
   }
 
   getReleaseDateYear() {
-    const yearReleased = this.state.movieDetails.release_date.slice(0, 4);
-    return yearReleased;
+    return this.state.movieDetails.release_date.slice(0, 4);
   }
 
   getTrailerLink() {
@@ -100,71 +99,35 @@ class MovieView extends Component {
                     </p>
                   </div>
                   <div className="img-section-movie-info">
-                    <div
-                      className="movie-info-block-container"
-                      id="movie-release-date-container"
-                    >
-                      <p
-                        className="movie-info-label"
-                        id="movie-release-date-label"
-                      >
+                    <div className="movie-info-block-container">
+                      <p className="movie-info-label">
                         RELEASED
                       </p>
-                      <p
-                        className="movie-info-item"
-                        id="movie-release-date"
-                      >
+                      <p className="movie-info-item">
                         {this.getReleaseDateYear()}
                       </p>
                     </div>
-                    <div
-                      className="movie-info-block-container"
-                      id="movie-director-info"
-                    >
-                      <p
-                        className="movie-info-label"
-                        id="movie-director-label"
-                      >
+                    <div className="movie-info-block-container">
+                      <p className="movie-info-label">
                         DIRECTOR
                       </p>
-                      <p
-                        className="movie-info-item"
-                        id="movie-director"
-                      >
+                      <p className="movie-info-item">
                         {this.getDirector()}
                       </p>
                     </div>
-                    <div
-                      className="movie-info-block-container"
-                      id="movie-genre-info"
-                    >
-                      <p
-                        className="movie-info-label"
-                        id="movie-genre-label"
-                      >
+                    <div className="movie-info-block-container">
+                      <p className="movie-info-label">
                         GENRE
                       </p>
-                      <p
-                        className="movie-info-item"
-                        id="movie-genres"
-                      >
+                      <p className="movie-info-item">
                         {this.getTopGenre()}
                       </p>
                     </div>
-                    <div
-                      className="movie-info-block-container"
-                      id="movie-poster-info"
-                    >
-                      <p
-                        className="movie-info-label"
-                        id="movie-poster-label"
-                      >
+                    <div className="movie-info-block-container">
+                      <p className="movie-info-label">
                         POSTER
                       </p>
-                      <p
-                        className="movie-info-item"
-                        id="movie-poster"
-                      >
+                      <p className="movie-info-item">
                         <img
                           className="poster"
                           src={backdropUrl + this.state.movieDetails.poster_path}
