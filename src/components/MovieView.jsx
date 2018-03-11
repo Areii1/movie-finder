@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import apikey from '../apikey';
 import './MovieView.css';
-import prevButton from '../media/prev-button.png';
 import playButton from '../media/play-button.png';
 
 const language = 'en-us';
@@ -86,18 +84,9 @@ class MovieView extends Component {
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
                 <div className="img-section-content-container">
-                  <div className="header">
-                    <Link to="/">
-                      <img
-                        className="prev-button"
-                        src={prevButton}
-                        alt="Previous Button"
-                      />
-                    </Link>
-                    <h1 className="headline" >
-                      MOVIE-FINDER
-                    </h1>
-                  </div>
+                  <h1 className="headline" >
+                    MOVIE-FINDER
+                  </h1>
                   <div className="movie-title-item">
                     <a target="_blank" href={this.getTrailerLink()}>
                       <img
