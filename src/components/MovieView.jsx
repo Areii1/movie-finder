@@ -5,16 +5,12 @@ import apikey from '../apikey';
 import './MovieView.css';
 import playButton from '../media/play-button.png';
 
-const language = 'en-us';
-
 class MovieView extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       movieDetails: null,
-      movieCredits: null,
-      videoLinks: null,
     };
   }
 
@@ -22,28 +18,14 @@ class MovieView extends Component {
     const movieId = this.props.match.params.id;
     axios({
       method: 'get',
-      url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&append_to_response=videos`,
+      url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&append_to_response=videos,credits,`,
     }).then((response) => {
       this.setState({ movieDetails: response.data });
-    });
-
-    axios({
-      method: 'get',
-      url: `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apikey}`,
-    }).then((response) => {
-      this.setState({ movieCredits: response.data });
-    });
-
-    axios({
-      method: 'get',
-      url: `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apikey}&language=${language}`,
-    }).then((response) => {
-      this.setState({ videoLinks: response.data });
     });
   }
 
   getDirector() {
-    const director = this.state.movieCredits.crew.find((member) => {
+    const director = this.state.movieDetails.credits.crew.find((member) => {
       if (member.job === 'Director') {
         return member;
       }
@@ -67,14 +49,14 @@ class MovieView extends Component {
   }
 
   getTrailerLink() {
-    return `https://www.youtube.com/watch?v=${this.state.videoLinks.results[0].key}`;
+    return `https://www.youtube.com/watch?v=${this.state.movieDetails.videos.results[0].key}`;
   }
 
   render() {
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
-        { this.state.movieDetails && this.state.movieCredits && this.state.videoLinks ?
+        { this.state.movieDetails ?
           <div className="content-wrapper">
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
