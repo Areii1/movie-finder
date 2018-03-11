@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import apikey from '../apikey';
 import './MovieView.css';
+import prevButton from '../media/prev-button.png';
 
 const language = 'en-us';
 
@@ -41,93 +42,132 @@ class MovieView extends Component {
       }
       return null;
     });
-    console.log(director[0].name);
     return director[0].name;
   }
 
+  getTopGenre() {
+    if (this.state.movieDetails.genres[0]) {
+      return this.state.movieDetails.genres[0].name;
+    }
+    return 'not found';
+  }
+
+  getReleaseDateYear() {
+    const yearReleased = this.state.movieDetails.release_date.slice(0, 4);
+    console.log(yearReleased);
+    return yearReleased;
+  }
 
   render() {
+    console.log(prevButton);
+    if (this.state.movieCredits && this.state.movieDetails) {
+      console.log(this.state.movieDetails.genres);
+    }
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
         { this.state.movieDetails && this.state.movieCredits ?
           <div className="content-wrapper">
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
-              <div className="img-section-content-container">
-                <h1 className="headline" >
-                  Movie-finder
-                </h1>
-                <p className="movie-title">
-                  {this.state.movieDetails.title}
-                </p>
-                <div className="img-section-movie-info">
-                  <div id="movie-release-date-container">
-                    <p
-                      className="movie-info-label"
-                      id="movie-release-date-label"
-                    >
-                      Release date:
-                    </p>
-                    <p
-                      className="movie-info-item"
-                      id="movie-release-date"
-                    >
-                      {this.state.movieDetails.release_date}
-                    </p>
-                  </div>
-                  <div id="movie-director-info">
-                    <p
-                      className="movie-info-label"
-                      id="movie-director-label"
-                    >
-                      director:
-                    </p>
-                    <p
-                      className="movie-info-item"
-                      id="movie-director"
-                    >
-                      {this.getDirector()}
-                    </p>
-                  </div>
-                  <div id="movie-genre-info">
-                    <p
-                      className="movie-info-label"
-                      id="movie-genre-label"
-                    >
-                      genres:
-                    </p>
-                    <p
-                      className="movie-info-item"
-                      id="movie-genres"
-                    >
-                      drama + blaa blaa
-                    </p>
-                  </div>
-                  <div id="movie-poster-info">
-                    <p
-                      className="movie-info-label"
-                      id="movie-poster-label"
-                    >
-                      poster:
-                    </p>
-                    <p
-                      className="movie-info-item"
-                      id="movie-poster"
-                    >
+              <div className="img-section-gradient" >
+                <div className="img-section-content-container">
+                  <div className="header">
+                    <Link to="/">
                       <img
-                        className="poster"
-                        src={backdropUrl + this.state.movieDetails.poster_path}
-                        alt="Movie poster"
+                        className="prev-button"
+                        src={prevButton}
+                        alt="Previous Button"
                       />
-                    </p>
+                    </Link>
+                    <h1 className="headline" >
+                      MOVIE-FINDER
+                    </h1>
+                  </div>
+                  <p className="movie-title">
+                    {this.state.movieDetails.title}
+                  </p>
+                  <div className="img-section-movie-info">
+                    <div
+                      className="movie-info-block-container"
+                      id="movie-release-date-container"
+                    >
+                      <p
+                        className="movie-info-label"
+                        id="movie-release-date-label"
+                      >
+                        RELEASED
+                      </p>
+                      <p
+                        className="movie-info-item"
+                        id="movie-release-date"
+                      >
+                        {this.getReleaseDateYear()}
+                      </p>
+                    </div>
+                    <div
+                      className="movie-info-block-container"
+                      id="movie-director-info"
+                    >
+                      <p
+                        className="movie-info-label"
+                        id="movie-director-label"
+                      >
+                        DIRECTOR
+                      </p>
+                      <p
+                        className="movie-info-item"
+                        id="movie-director"
+                      >
+                        {this.getDirector()}
+                      </p>
+                    </div>
+                    <div
+                      className="movie-info-block-container"
+                      id="movie-genre-info"
+                    >
+                      <p
+                        className="movie-info-label"
+                        id="movie-genre-label"
+                      >
+                        GENRE
+                      </p>
+                      <p
+                        className="movie-info-item"
+                        id="movie-genres"
+                      >
+                        {this.getTopGenre()}
+                      </p>
+                    </div>
+                    <div
+                      className="movie-info-block-container"
+                      id="movie-poster-info"
+                    >
+                      <p
+                        className="movie-info-label"
+                        id="movie-poster-label"
+                      >
+                        POSTER
+                      </p>
+                      <p
+                        className="movie-info-item"
+                        id="movie-poster"
+                      >
+                        <img
+                          className="poster"
+                          src={backdropUrl + this.state.movieDetails.poster_path}
+                          alt="Movie poster"
+                        />
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="content-container">
+              <p className="movie-overview Label">
+                OVERVIEW
+              </p>
               <p className="movie-overview"> {this.state.movieDetails.overview} </p>
-              
-              <Link to="/">back to the main page </Link>
             </div>
           </div>
         : (<p>...</p>)
