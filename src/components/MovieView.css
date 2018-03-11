@@ -7,7 +7,7 @@ body {
 
 .header {
 	display: flex;
-	margin-left: -70px;
+	margin-left: -180px;
 }
 
 .prev-button {
@@ -47,9 +47,21 @@ body {
 	color: white;
 }
 
+.movie-title-item {
+	display: flex;
+	
+}
+
 .movie-title {
 	font-size: 2em;
 	color: white;
+}
+
+.play-button {
+	position: absolute;
+	margin-left: -90px;
+	margin-top: 5px;
+	height: 90px;
 }
 
 .img-section-movie-info {
@@ -85,13 +97,12 @@ body {
 	max-width: 900px;
 	display: flex;
 	flex-direction: column;
-
 }
 
 .poster {
 	height: 300px;
 	margin-top: -300px;
 	position: relative;
-	bottom: -270px;
+	bottom: -280px;
 }
 

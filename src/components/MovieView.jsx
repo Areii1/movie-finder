@@ -5,6 +5,7 @@ import axios from 'axios';
 import apikey from '../apikey';
 import './MovieView.css';
 import prevButton from '../media/prev-button.png';
+import playButton from '../media/play-button.png';
 
 const language = 'en-us';
 
@@ -15,6 +16,7 @@ class MovieView extends Component {
     this.state = {
       movieDetails: null,
       movieCredits: null,
+      videoLinks: null,
     };
   }
 
@@ -33,6 +35,13 @@ class MovieView extends Component {
     }).then((response) => {
       this.setState({ movieCredits: response.data });
     });
+
+    axios({
+      method: 'get',
+      url: `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apikey}&language=${language}`,
+    }).then((response) => {
+      this.setState({ videoLinks: response.data });
+    });
   }
 
   getDirector() {
@@ -42,7 +51,10 @@ class MovieView extends Component {
       }
       return null;
     });
-    return director[0].name;
+    if (director[0]) {
+      return director[0].name;
+    }
+    return 'not found';
   }
 
   getTopGenre() {
@@ -54,19 +66,22 @@ class MovieView extends Component {
 
   getReleaseDateYear() {
     const yearReleased = this.state.movieDetails.release_date.slice(0, 4);
-    console.log(yearReleased);
     return yearReleased;
   }
 
+  getTrailerLink() {
+    return `https://www.youtube.com/watch?v=${this.state.videoLinks.results[0].key}`;
+  }
+
   render() {
-    console.log(prevButton);
-    if (this.state.movieCredits && this.state.movieDetails) {
-      console.log(this.state.movieDetails.genres);
+    if (this.state.movieCredits && this.state.movieDetails && this.state.videoLinks) {
+      console.log(this.state.videoLinks.results[0].key);
     }
+
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
-        { this.state.movieDetails && this.state.movieCredits ?
+        { this.state.movieDetails && this.state.movieCredits && this.state.videoLinks ?
           <div className="content-wrapper">
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
@@ -83,9 +98,18 @@ class MovieView extends Component {
                       MOVIE-FINDER
                     </h1>
                   </div>
-                  <p className="movie-title">
-                    {this.state.movieDetails.title}
-                  </p>
+                  <div className="movie-title-item">
+                    <a target="_blank" href={this.getTrailerLink()}>
+                      <img
+                        className="play-button"
+                        src={playButton}
+                        alt="Play Button"
+                      />
+                    </a>
+                    <p className="movie-title">
+                      {this.state.movieDetails.title}
+                    </p>
+                  </div>
                   <div className="img-section-movie-info">
                     <div
                       className="movie-info-block-container"
