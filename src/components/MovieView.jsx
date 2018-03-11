@@ -43,14 +43,14 @@ class MovieView extends Component {
   }
 
   getDirector() {
-    const director = this.state.movieCredits.crew.filter((member) => {
+    const director = this.state.movieCredits.crew.find((member) => {
       if (member.job === 'Director') {
         return member;
       }
       return null;
     });
-    if (director[0]) {
-      return director[0].name;
+    if (director) {
+      return director.name;
     }
     return 'not found';
   }
@@ -71,10 +71,6 @@ class MovieView extends Component {
   }
 
   render() {
-    if (this.state.movieCredits && this.state.movieDetails && this.state.videoLinks) {
-      console.log(this.state.videoLinks.results[0].key);
-    }
-
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
