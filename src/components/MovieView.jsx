@@ -5,6 +5,8 @@ import apikey from '../apikey';
 import './MovieView.css';
 import playButton from '../media/play-button.png';
 
+import CastMembersList from './CastMembersList';
+
 class MovieView extends Component {
   constructor(props) {
     super(props);
@@ -118,10 +120,18 @@ class MovieView extends Component {
               </div>
             </div>
             <div className="content-container">
-              <p className="movie-overview Label">
-                OVERVIEW
-              </p>
-              <p className="movie-overview"> {this.state.movieDetails.overview} </p>
+              <div>
+                <h2 className="movie-overview Label">
+                  OVERVIEW
+                </h2>
+                <p className="movie-overview"> {this.state.movieDetails.overview} </p>
+              </div>
+              <div className="cast-members-list">
+                <h2 className="cast-members-label">CAST</h2>
+                <div className="cast-members-item">
+                  <CastMembersList movieDetails={this.state.movieDetails} />
+                </div>
+              </div>
             </div>
           </div>
         : (<p>...</p>)

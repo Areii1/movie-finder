@@ -1,0 +1,4 @@
+.cast-member-item {
+  display: flex;
+  justify-content: space-between
+}
