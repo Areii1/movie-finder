@@ -1,4 +1,20 @@
-.cast-member-item {
+ul {
+  padding: 0;
+  margin-top: 50px;
+}
+
+.even {
   display: flex;
-  justify-content: space-between
+  background-color: rgba(31,59,113, 0.2);
+}
+
+.odd {
+  display: flex;
+  background-color: white;
+}
+
+li > p {
+  width: 20%;
+  padding-right: 100px;
+  text-align: left;
 }

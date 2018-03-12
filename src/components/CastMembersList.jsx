@@ -4,10 +4,10 @@ import './CastMembersList.css';
 
 
 function CastMembersList(props) {
-  const list = props.movieDetails.credits.cast.map(member =>
+  const list = props.movieDetails.credits.cast.map((member, index) =>
     (
       <li
-        className="cast-member-item"
+        className={(index % 2 === 0) ? 'even' : 'odd'}
         key={member.credit_id}
       >
         <p className="cast-member-name">{member.name}</p>
@@ -24,8 +24,8 @@ function CastMembersList(props) {
   );
 }
 
-CastMembersList.propTypes = {
-  movieDetails: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+// CastMembersList.propTypes = {
+//   movieDetails: PropTypes.objectOf(),
+// };
 
 export default CastMembersList;
