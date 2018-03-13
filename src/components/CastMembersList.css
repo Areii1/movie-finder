@@ -18,3 +18,7 @@ li > p {
   padding-right: 100px;
   text-align: left;
 }
+
+.cast-member-picture {
+  height: 120px;
+}
