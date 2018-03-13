@@ -1,0 +1,12 @@
+.movie-list-item {
+  height: 370px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 60px 60px 0;
+}
+
+.movie-genres-list {
+  list-style-type: none;
+  margin: 0;
+}
