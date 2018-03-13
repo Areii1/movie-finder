@@ -1,26 +1,18 @@
-body {
-  margin: 0;
-}
-
-.content-wrapper{
+.main-view-content-wrapper{
   margin: 0 auto;
   max-width: 900px;
-  display: flex;
-  justify-content: space-between;
 }
 
-.title {
+.main-view-header {
+  display: flex;
+}
+
+.main-view-title {
   margin-top: 20px;
 }
 
-.search-bar {
+.main-view-search-bar {
   padding: 10px;
-  margin-top: 20px;
+  margin: 20px 0 0 50px;
   background-color: rgba(46,74,117, 0.3); 
-}
-
-.movie-list-wrapper {
-  background: black;
-  display: flex;
-  border: 1px solid red;
 }

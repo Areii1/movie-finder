@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MovieListItem from './MovieListItem';
+import './MovieList.css';
 
 function MovieList(props) {
   const filteredList = props.list.filter(movie => movie.poster_path);
   const finalList = filteredList.map(movie => (
     <li key={movie.id}>
-      <div className="moviesListItem-wrapper">
+      <div>
         <MovieListItem movie={movie} genres={props.genres} />
       </div>
     </li>
   ));
 
   return (
-    <ol>{finalList}</ol>
+    <ol className="movie-list">{finalList}</ol>
   );
 }
 
