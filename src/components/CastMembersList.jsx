@@ -31,7 +31,7 @@ function CastMembersList(props) {
 }
 
 CastMembersList.propTypes = {
-  movieDetails: PropTypes.objectof(PropTypes.object).isRequired,
+  movieDetails: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default CastMembersList;

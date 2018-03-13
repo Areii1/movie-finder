@@ -4,7 +4,6 @@ import axios from 'axios';
 import apikey from '../apikey';
 import './MovieView.css';
 import playButton from '../media/play-button.png';
-
 import CastMembersList from './CastMembersList';
 
 class MovieView extends Component {
@@ -59,7 +58,7 @@ class MovieView extends Component {
     return (
       <div>
         { this.state.movieDetails ?
-          <div className="content-wrapper">
+          <div className="movie-view-content-wrapper">
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
                 <div className="img-section-content-container">

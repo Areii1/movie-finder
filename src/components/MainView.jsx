@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apikey from '../apikey';
 import MovieList from './MovieList';
+import './MainView.css';
 
 const language = 'en-us';
 class MainView extends Component {
@@ -42,15 +43,18 @@ class MainView extends Component {
 
   render() {
     return (
-      <div>
-        <h1>movie-finder</h1>
-        <form onSubmit={event => this.handleSubmit(event)}>
+      <div className="content-wrapper">
+        <h1 className="title">MOVIE-FINDER</h1>
+        <form className="search-bar-field" onSubmit={event => this.handleSubmit(event)}>
           <input
-            className="searchbar"
+            className="search-bar"
             onChange={event => this.handleSearchBarChange(event)}
           />
         </form>
-        <MovieList list={this.state.movieListResponse} genres={this.state.genres} />
+        <MovieList
+          list={this.state.movieListResponse}
+          genres={this.state.genres}
+        />
       </div>
     );
   }
