@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CastMembersList.css';
+import QuestionMark from '../media/question-mark.png';
 
-const urlStart = 'https://image.tmdb.org/t/p/original';
+const urlStart = 'https://image.tmdb.org/t/p/w92';
 
 function CastMembersList(props) {
   console.log(props.movieDetails);
@@ -14,7 +15,7 @@ function CastMembersList(props) {
       >
         <img
           className="cast-member-picture"
-          src={urlStart + member.profile_path}
+          src={(member.profile_path) ? urlStart + member.profile_path : QuestionMark}
           alt={member.name}
         />
 
