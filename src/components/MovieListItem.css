@@ -10,3 +10,22 @@
   list-style-type: none;
   margin: 0;
 }
+
+.movie-list-item:hover {
+  border: 1px solid lightblue;
+}
+
+.movie-list-item-link-properties {
+  text-decoration: none;
+  font-family: 'Bree Serif' , serif;
+  color: black;
+}
+
+.movie-list-item-title {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.movie-genres-list {
+  color: gray;
+}

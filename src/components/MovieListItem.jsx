@@ -22,15 +22,20 @@ function MovieListItem(props) {
 
   const listItem = (
     <div className="movie-list-item">
-      <img
-        className="movie-poster"
-        src={posterUrl + props.movie.poster_path}
-        alt="movie_poster"
-      />
-      <Link to={`/movieview/${props.movie.id}`}>{props.movie.title}</Link>
-      <ul className="movie-genres-list">
-        {genresList}
-      </ul>
+      <Link
+        to={`/movieview/${props.movie.id}`}
+        className="movie-list-item-link-properties"
+      >
+        <img
+          className="movie-poster"
+          src={posterUrl + props.movie.poster_path}
+          alt="movie_poster"
+        />
+        <p className="movie-list-item-title">{props.movie.title}</p>
+        <ul className="movie-genres-list">
+          {genresList}
+        </ul>
+      </Link>
     </div>
 
   );
