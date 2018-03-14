@@ -87,8 +87,9 @@ body {
 	margin: 0;
 }
 
-.movie-overview {
+.movie-overview-item {
 	width: 60%;
+	height: 300px;
 }
 
 .content-container {

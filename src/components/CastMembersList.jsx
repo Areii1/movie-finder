@@ -19,7 +19,7 @@ function CastMembersList(props) {
             alt={member.name}
           />
           <p className="cast-member-name">{member.name}</p>
-          <p className="appearing-as-label">Appearing as</p>
+          <p className="cast-member-middle-block" />
           <p className="cast-member-character">{member.character}</p>
         </li>
       );

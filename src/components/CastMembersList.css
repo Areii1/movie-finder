@@ -21,6 +21,6 @@ li > p {
 }
 
 .cast-member-picture {
-  height: 120px;
-  width: 80px;
+  max-height: 120px;
+  max-width: 80px;
 }

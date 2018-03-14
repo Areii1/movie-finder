@@ -115,8 +115,8 @@ class MovieView extends Component {
               </div>
             </div>
             <div className="content-container">
-              <div>
-                <h2 className="movie-overview Label">
+              <div className="movie-overview-item">
+                <h2 className="movie-overview-label">
                   OVERVIEW
                 </h2>
                 <p className="movie-overview"> {this.state.movieDetails.overview} </p>
