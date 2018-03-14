@@ -24,6 +24,7 @@ function CastMembersList(props) {
         </li>
       );
     }
+    return null;
   });
 
   return (
@@ -34,7 +35,16 @@ function CastMembersList(props) {
 }
 
 CastMembersList.propTypes = {
-  movieDetails: PropTypes.objectOf(PropTypes.object).isRequired,
+  movieDetails: PropTypes.shape({
+    credits: PropTypes.shape({
+      cast: PropTypes.arrayOf(PropTypes.shape({
+        credit_id: PropTypes.string,
+        profile_path: PropTypes.string,
+        name: PropTypes.string,
+        character: PropTypes.string,
+      })),
+    }),
+  }).isRequired,
 };
 
 export default CastMembersList;

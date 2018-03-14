@@ -54,7 +54,10 @@ MovieListItem.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
   }).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
 };
 
 export default MovieListItem;

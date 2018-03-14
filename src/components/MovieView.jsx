@@ -26,12 +26,8 @@ class MovieView extends Component {
   }
 
   getDirector() {
-    const director = this.state.movieDetails.credits.crew.find((member) => {
-      if (member.job === 'Director') {
-        return member;
-      }
-      return null;
-    });
+    const director = this.state.movieDetails.credits.crew.find(member =>
+      (member.job === 'Director'));
     if (director) {
       return director.name;
     }
