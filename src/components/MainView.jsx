@@ -13,6 +13,7 @@ class MainView extends Component {
       searchTerm: '',
       movieListResponse: [],
       genres: [],
+      discoverMoviesList: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +25,13 @@ class MainView extends Component {
       url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=${language}`,
     }).then((response) => {
       this.setState({ genres: response.data.genres });
+    });
+
+    axios({
+      method: 'get',
+      url: `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
+    }).then((response) => {
+      this.setState({ discoverMoviesList: response.data.results });
     });
   }
 
@@ -53,10 +61,21 @@ class MainView extends Component {
             />
           </form>
         </div>
-        <MovieList
-          list={this.state.movieListResponse}
-          genres={this.state.genres}
-        />
+        {!(this.state.discoverMoviesList.length === 0) && (
+          <MovieList
+            list={
+              this.state.movieListResponse.length === 0 ?
+              this.state.discoverMoviesList :
+              this.state.movieListResponse
+            }
+            genres={this.state.genres}
+            displayMode={
+              this.state.movieListResponse.length === 0 ?
+              'discover' :
+              'search'
+            }
+          />
+        )}
       </div>
     );
   }

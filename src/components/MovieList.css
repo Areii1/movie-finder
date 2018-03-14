@@ -4,3 +4,23 @@
   flex-wrap: wrap;
   padding: 0;
 }
+
+.main-view-header {
+  height: 150px;
+}
+
+.mode-of-list-label {
+  display: flex;
+}
+
+.mode-of-list-label > h2 {
+  margin-right: 50px;
+}
+
+.flipped-on {
+  font-size: 2em;
+}
+
+.flipped-off {
+  color: gray;
+}
