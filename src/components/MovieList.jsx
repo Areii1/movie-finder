@@ -4,7 +4,6 @@ import MovieListItem from './MovieListItem';
 import './MovieList.css';
 
 function MovieList(props) {
-  console.log(props, 'props');
   const filteredList = props.list.filter(movie => movie.poster_path);
   const finalList = filteredList.map(movie => (
     <li key={movie.id}>

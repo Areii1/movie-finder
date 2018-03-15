@@ -5,10 +5,6 @@
   padding: 0;
 }
 
-.main-view-header {
-  height: 150px;
-}
-
 .mode-of-list-label {
   display: flex;
 }

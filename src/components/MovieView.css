@@ -89,7 +89,7 @@ body {
 
 .movie-overview-item {
 	width: 60%;
-	height: 300px;
+	min-height: 300px;
 }
 
 .content-container {
