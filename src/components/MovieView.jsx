@@ -50,6 +50,7 @@ class MovieView extends Component {
   }
 
   render() {
+    console.log(this.state.movieDetails);
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
@@ -125,6 +126,14 @@ class MovieView extends Component {
                 <h2 className="cast-members-label">CAST</h2>
                 <div className="cast-members-item">
                   <CastMembersList movieDetails={this.state.movieDetails} />
+                </div>
+              </div>
+              <div className="information">
+                <h2 className="information-label">INFORMATION</h2>
+                <div>
+                  <p>runtime: {this.state.movieDetails.runtime}</p>
+                  <p>rating: {this.state.movieDetails.vote_average}</p>
+                  <p>budget: {this.state.movieDetails.budget}</p>
                 </div>
               </div>
             </div>
