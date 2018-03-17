@@ -51,7 +51,7 @@ class MainView extends Component {
 
   render() {
     return (
-      <div className="main-view-content-wrapper">
+      <div className="container">
         <div className="main-view-header">
           <h1 className="main-view-title">MOVIE-FINDER</h1>
           <form className="main-view-search-bar-field" onSubmit={event => this.handleSubmit(event)}>

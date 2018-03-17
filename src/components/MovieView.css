@@ -5,22 +5,11 @@ body {
 	line-height: 200%;
 }
 
-.header {
-	display: flex;
-	margin-left: -180px;
-}
-
-.prev-button {
-	height: 50px;
-	margin: 20px;
-}
-
 .img-section-wrapper {
 	position: relative;
 	width: 100%;
 	height: 700px;
 	background-size: cover;
-	display: flex;
 }
 
 .img-section-gradient {
@@ -35,8 +24,6 @@ body {
 
 .img-section-content-container {
 	height: 100%;
-	margin: 0 auto;
-	width: 1140px;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
@@ -49,7 +36,6 @@ body {
 
 .movie-title-item {
 	display: flex;
-	
 }
 
 .movie-title {
@@ -93,10 +79,6 @@ body {
 }
 
 .content-container {
-	margin: 0 auto;
-	max-width: 1140px;
-	display: flex;
-	flex-direction: column;
 	font-size: 1.2em;
 }
 

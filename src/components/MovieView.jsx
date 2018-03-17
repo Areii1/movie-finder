@@ -57,7 +57,7 @@ class MovieView extends Component {
           <div className="movie-view-content-wrapper">
             <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
-                <div className="img-section-content-container">
+                <div className="container img-section-content-container" >
                   <h1 className="headline" >
                     MOVIE-FINDER
                   </h1>
@@ -123,7 +123,7 @@ class MovieView extends Component {
                 </div>
               </div>
             </div>
-            <div className="content-container">
+            <div className="container content-container">
               <div className="movie-overview-item">
                 <h2 className="movie-overview-label">
                   OVERVIEW
