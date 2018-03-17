@@ -146,7 +146,7 @@ class MovieView extends Component {
               </div>
             </div>
           </div>
-        : (<p>LOADING (or unable to get necessary data)</p>)
+        : (<p className="loading">LOADING</p>)
         }
       </div>
     );
