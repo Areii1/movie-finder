@@ -131,9 +131,9 @@ class MovieView extends Component {
               <div className="information">
                 <h2 className="information-label">INFORMATION</h2>
                 <div>
-                  <p>runtime: {this.state.movieDetails.runtime}</p>
+                  <p>runtime: {`${this.state.movieDetails.runtime} minutes`}</p>
                   <p>rating: {this.state.movieDetails.vote_average}</p>
-                  <p>budget: {this.state.movieDetails.budget}</p>
+                  <p>budget: {`${this.state.movieDetails.budget} $`}</p>
                 </div>
               </div>
             </div>

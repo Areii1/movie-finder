@@ -6,14 +6,15 @@ import './MovieList.css';
 function MovieList(props) {
   const filteredList = props.list.filter(movie => movie.poster_path);
   const finalList = filteredList.map(movie => (
-    <li key={movie.id}>
-      <div>
-        <MovieListItem movie={movie} genres={props.genres} />
-      </div>
+    <li
+      key={movie.id}
+      className="movie-list-element"
+    >
+      <MovieListItem movie={movie} genres={props.genres} />
     </li>
   ));
   return (
-    <div>
+    <div className="movie-list-wrapper">
       <div className="mode-of-list-label">
         <h2 className={
           (props.displayMode === 'search')

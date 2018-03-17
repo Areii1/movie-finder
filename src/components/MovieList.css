@@ -1,16 +1,15 @@
 .movie-list {
   list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0;
+  grid-row-gap: 2em;
   padding: 0;
 }
 
 .mode-of-list-label {
-  display: flex;
-}
-
-.mode-of-list-label > h2 {
-  margin-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .flipped-on {

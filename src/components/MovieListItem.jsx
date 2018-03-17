@@ -21,29 +21,24 @@ function MovieListItem(props) {
   });
 
   const listItem = (
-    <div className="movie-list-item">
-      <Link
-        to={`/movieview/${props.movie.id}`}
-        className="movie-list-item-link-properties"
-      >
-        <img
-          className="movie-poster"
-          src={posterUrl + props.movie.poster_path}
-          alt="movie_poster"
-        />
-        <p className="movie-list-item-title">{props.movie.title}</p>
-        <ul className="movie-genres-list">
-          {genresList}
-        </ul>
-      </Link>
-    </div>
-
+    <Link
+      to={`/movieview/${props.movie.id}`}
+      className="movie-list-item"
+    >
+      <img
+        className="movie-poster"
+        src={posterUrl + props.movie.poster_path}
+        alt="movie_poster"
+      />
+      <p className="movie-list-item-title">{props.movie.title}</p>
+      <ul className="movie-genres-list">
+        {genresList}
+      </ul>
+    </Link>
   );
 
   return (
-    <div>
-      { listItem }
-    </div>
+    listItem
   );
 }
 
