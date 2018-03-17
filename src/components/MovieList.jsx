@@ -6,32 +6,20 @@ import './MovieList.css';
 function MovieList(props) {
   const filteredList = props.list.filter(movie => movie.poster_path);
   const finalList = filteredList.map(movie => (
-    <li
-      key={movie.id}
-      className="movie-list-element"
-    >
+    <li key={movie.id}>
       <MovieListItem movie={movie} genres={props.genres} />
     </li>
   ));
   return (
     <div className="movie-list-wrapper">
       <div className="mode-of-list-label">
-        <h2 className={
-          (props.displayMode === 'search')
-          ? 'flipped-on' : 'flipped-off'
+        <h2 className="mode-of-list">
+          {(props.displayMode === 'search')
+          ? 'SEARCH' : 'DISCOVER'
           }
-        >
-          SEARCH
-        </h2>
-        <h2 className={
-          (props.displayMode === 'discover')
-          ? 'flipped-on' : 'flipped-off'
-          }
-        >
-          DISCOVER
         </h2>
       </div>
-      <ol className="movie-list">{finalList}</ol>
+      <ul className="movie-list">{finalList}</ul>
     </div>
   );
 }

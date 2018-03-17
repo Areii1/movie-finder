@@ -14,5 +14,8 @@
 .main-view-search-bar {
   padding: 10px;
   margin: 20px 0 0 50px;
-  background-color: rgba(46,74,117, 0.3); 
+  background-color: rgba(46,74,117, 0.3);
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-family: 'Bree Serif' , serif;
 }

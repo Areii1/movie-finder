@@ -50,7 +50,6 @@ class MovieView extends Component {
   }
 
   render() {
-    console.log(this.state.movieDetails);
     const backdropUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div>
@@ -63,15 +62,24 @@ class MovieView extends Component {
                     MOVIE-FINDER
                   </h1>
                   <div className="movie-title-item">
-                    <a target="_blank" href={this.getTrailerLink()}>
+                    {this.state.movieDetails.videos.results[0] ?
+                      <a target="_blank" href={this.getTrailerLink()}>
+                        <img
+                          className="play-button"
+                          src={playButton}
+                          alt="Play Button"
+                        />
+                      </a>
+                    :
                       <img
                         className="play-button"
                         src={playButton}
                         alt="Play Button"
                       />
-                    </a>
+                    }
                     <p className="movie-title">
-                      {this.state.movieDetails.title}
+                      {this.state.movieDetails.title ?
+                      this.state.movieDetails.title : '...'}
                     </p>
                   </div>
                   <div className="img-section-movie-info">
@@ -138,7 +146,7 @@ class MovieView extends Component {
               </div>
             </div>
           </div>
-        : (<p>...</p>)
+        : (<p>LOADING (or unable to get necessary data)</p>)
         }
       </div>
     );

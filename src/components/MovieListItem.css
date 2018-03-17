@@ -1,30 +1,24 @@
 .movie-list-item {
-  height: 370px;
-  display: grid;
   text-decoration: none;
   font-family: 'Bree Serif' , serif;
   color: black;
 }
 
-.movie-list-item-title {
-  width: 200px;
-}
-
 .movie-genres-list {
   list-style-type: none;
   margin: 0;
-  width: 200px;
-}
-
-.movie-list-item:hover {
-  border: 1px solid lightblue;
 }
 
 .movie-list-item-title {
-  margin: 0;
+  margin: 10px 0 0 0;
   font-size: 1.4em;
 }
 
 .movie-genres-list {
   color: gray;
+}
+
+.movie-poster {
+  display: block;
+  max-width: 100%;
 }
