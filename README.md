@@ -1,7 +1,8 @@
 ### Movie-finder
 
-
 Awesome movie finding application, browse and search for different movies at your convenience. Created with React.js
+
+You can test it out[here](https://areii1.github.io/movie-finder) 
 
 Run these commands for local use:
 
