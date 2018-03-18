@@ -50,12 +50,13 @@ class MovieView extends Component {
   }
 
   render() {
-    const backdropUrl = 'https://image.tmdb.org/t/p/original';
+    const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
+    const backdropPosterUrl = 'https://image.tmdb.org/t/p/w342';
     return (
       <div>
         { this.state.movieDetails ?
           <div className="movie-view-content-wrapper">
-            <div className="img-section-wrapper" style={{ background: `url(${backdropUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
+            <div className="img-section-wrapper" style={{ background: `url(${backdropHeaderUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat` }}>
               <div className="img-section-gradient" >
                 <div className="container img-section-content-container" >
                   <h1 className="headline" >
@@ -114,7 +115,7 @@ class MovieView extends Component {
                       <p className="movie-info-item">
                         <img
                           className="poster"
-                          src={backdropUrl + this.state.movieDetails.poster_path}
+                          src={backdropPosterUrl + this.state.movieDetails.poster_path}
                           alt="Movie poster"
                         />
                       </p>

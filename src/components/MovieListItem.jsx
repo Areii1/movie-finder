@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './MovieListItem.css';
 
-const posterUrl = 'http://image.tmdb.org/t/p/w500';
+const posterUrl = 'http://image.tmdb.org/t/p/w342';
 
 function MovieListItem(props) {
   const genresList = props.movie.genre_ids.map((id) => {
