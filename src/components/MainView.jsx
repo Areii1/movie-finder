@@ -68,6 +68,7 @@ class MainView extends Component {
               this.state.discoverMoviesList :
               this.state.movieListResponse
             }
+            searchTerm={this.state.searchTerm}
             genres={this.state.genres}
             displayMode={
               this.state.movieListResponse.length === 0 ?

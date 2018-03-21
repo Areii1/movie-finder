@@ -9,7 +9,8 @@ function App() {
     <Router>
       <div className="app-router-wrapper">
         <Route exact path="/" component={MainView} />
-        <Route path="/movieview/:id" component={MovieView} />
+        <Route path="/:id/:searchTerm" component={MovieView} />
+        <Route path="/:id" component={MovieView} />
       </div>
     </Router>
   );

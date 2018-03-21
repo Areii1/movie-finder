@@ -7,7 +7,11 @@ function MovieList(props) {
   const filteredList = props.list.filter(movie => movie.poster_path);
   const finalList = filteredList.map(movie => (
     <li key={movie.id}>
-      <MovieListItem movie={movie} genres={props.genres} />
+      <MovieListItem
+        movie={movie}
+        genres={props.genres}
+        searchTerm={props.searchTerm}
+      />
     </li>
   ));
   return (
@@ -27,6 +31,7 @@ function MovieList(props) {
 MovieList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  searchTerm: PropTypes.string.isRequired,
   displayMode: PropTypes.string.isRequired,
 };
 
