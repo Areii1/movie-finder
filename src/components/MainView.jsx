@@ -58,7 +58,6 @@ class MainView extends Component {
       this.setState({
         movieListResponse: response.data.results,
         searchTerm: this.props.match.params.searchTerm,
-
       });
     });
   }
@@ -90,6 +89,8 @@ class MainView extends Component {
           <form className="main-view-search-bar-field" onSubmit={event => this.handleSubmit(event)}>
             <input
               className="main-view-search-bar"
+              type="search"
+              value={this.state.searchTerm}
               onChange={event => this.handleSearchBarChange(event)}
             />
           </form>
