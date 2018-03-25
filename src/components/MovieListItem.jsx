@@ -21,9 +21,11 @@ function MovieListItem(props) {
     return null;
   });
 
+  const genre = props.genres[props.movie.genre_ids[0]];
+
   const listItem = (
     <Link
-      to={`/${props.movie.id}/${props.searchTerm}`}
+      to={`/movie/${props.movie.id}`}
       className="movie-list-item"
     >
       <img

@@ -31,7 +31,7 @@ function MovieList(props) {
 MovieList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
-  searchTerm: PropTypes.string.isRequired,
+  searchTerm: PropTypes.string,
   displayMode: PropTypes.string.isRequired,
 };
 

@@ -30,7 +30,7 @@ export default apikey;
 ```
 with your personal tmdb apikey replacing the XXYY
 
-then assert these commands
+then run these commands
 
 ```
 npm start
