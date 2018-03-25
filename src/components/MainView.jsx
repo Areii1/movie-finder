@@ -18,7 +18,6 @@ class MainView extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getMovieListResponse = this.getMovieListResponse.bind(this);
     this.getMovieListResponseFromUrlParams = this.getMovieListResponseFromUrlParams.bind(this);
   }
 
@@ -62,19 +61,9 @@ class MainView extends Component {
     });
   }
 
-  getMovieListResponse() {
-    axios({
-      method: 'get',
-      url: `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=${language}&query=${this.state.searchTerm}&page=1&include_adult=true`,
-    }).then((response) => {
-      this.setState({ movieListResponse: response.data.results });
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     this.props.history.push(`/${this.state.searchTerm}`);
-    this.getMovieListResponse();
   }
 
   handleSearchBarChange(e) {
