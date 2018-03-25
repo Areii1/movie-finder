@@ -3,9 +3,6 @@
 Awesome movie finding application, browse and search for different movies at your convenience. Created with React.js
 
 You can test it out [here](https://areii1.github.io/movie-finder) 
-
-Run these commands for local use:
-
 ## Prerequisites
 Get an apikey from [The Movie DB](https://developers.themoviedb.org/3/getting-started/introduction)
 ## Usage
