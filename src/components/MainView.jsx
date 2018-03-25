@@ -29,7 +29,6 @@ class MainView extends Component {
     }).then((response) => {
       this.setState({
         genres: response.data.genres,
-        searchTerm: this.props.match.params.searchTerm,
       });
     });
 
@@ -40,8 +39,13 @@ class MainView extends Component {
       }).then((response) => {
         this.setState({ discoverMoviesList: response.data.results });
       });
+    } else {
+      this.getMovieListResponseFromUrlParams();
     }
-    else {
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.searchTerm !== prevProps.match.params.searchTerm) {
       this.getMovieListResponseFromUrlParams();
     }
   }
@@ -51,12 +55,15 @@ class MainView extends Component {
       method: 'get',
       url: `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=${language}&query=${this.props.match.params.searchTerm}&page=1&include_adult=true`,
     }).then((response) => {
-      this.setState({ movieListResponse: response.data.results });
+      this.setState({
+        movieListResponse: response.data.results,
+        searchTerm: this.props.match.params.searchTerm,
+
+      });
     });
   }
 
   getMovieListResponse() {
-    console.log(this.state.searchTerm, 'searchterm in getMovieListResponse()');
     axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=${language}&query=${this.state.searchTerm}&page=1&include_adult=true`,
@@ -87,7 +94,8 @@ class MainView extends Component {
             />
           </form>
         </div>
-        {(!(this.state.discoverMoviesList.length === 0) || !(this.state.movieListResponse.length === 0)) && (
+        {(!(this.state.discoverMoviesList.length === 0) ||
+          !(this.state.movieListResponse.length === 0)) && (
           <MovieList
             list={
               this.state.movieListResponse.length === 0 ?

@@ -6,7 +6,6 @@ import './MovieListItem.css';
 const posterUrl = 'http://image.tmdb.org/t/p/w342';
 
 function MovieListItem(props) {
-  console.log(props.searchTerm, 'searchterm movielistitem');
   const genresList = props.movie.genre_ids.map((id) => {
     if (props.genres[id]) {
       return (
@@ -20,8 +19,6 @@ function MovieListItem(props) {
     }
     return null;
   });
-
-  const genre = props.genres[props.movie.genre_ids[0]];
 
   const listItem = (
     <Link
