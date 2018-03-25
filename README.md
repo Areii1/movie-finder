@@ -1,38 +1,31 @@
-### Movie-finder
+# Movie-finder
 
 Awesome movie finding application, browse and search for different movies at your convenience. Created with React.js
 
-You can test it out[here](https://areii1.github.io/movie-finder) 
+You can test it out [here](https://areii1.github.io/movie-finder) 
 
 Run these commands for local use:
 
-(requires npm (node package manager))
+## Prerequisites
+Get an apikey from [The Movie DB](https://developers.themoviedb.org/3/getting-started/introduction)
+## Usage
 
-Usage:
-
-```
+```bash
 git clone https://github.com/Areii1/movie-finder
 cd movie-finder
 npm install
 ```
+Create a file `src/apikey.js` and paste following content 
 
-get an apikey from the movie database
-https://www.themoviedb.org/
-
-go inside the project src folder
-create a file named apikey.js
-write 
-
-```
+```javascript
 const apikey = 'XXYY';
 export default apikey;
-
 ```
-with your personal tmdb apikey replacing the XXYY
+Replace XXYY with your tmdb apikey
 
-then run these commands
+Then run these commands
 
-```
+```bash
 npm start
 open localhost:3000
 ```
