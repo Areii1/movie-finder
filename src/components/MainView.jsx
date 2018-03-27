@@ -15,6 +15,7 @@ class MainView extends Component {
       movieListResponse: [],
       genres: [],
       discoverMoviesList: [],
+      isLoading: true,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +37,10 @@ class MainView extends Component {
         method: 'get',
         url: `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
       }).then((response) => {
-        this.setState({ discoverMoviesList: response.data.results });
+        this.setState({
+          discoverMoviesList: response.data.results,
+          isLoading: false,
+        });
       });
     } else {
       this.getMovieListResponseFromUrlParams();
@@ -57,18 +61,50 @@ class MainView extends Component {
       this.setState({
         movieListResponse: response.data.results,
         searchTerm: this.props.match.params.searchTerm,
+        isLoading: false,
       });
     });
   }
 
+  getMovieList() {
+    if (!this.state.isLoading) {
+      if ((!(this.state.discoverMoviesList.length === 0) ||
+      !(this.state.movieListResponse.length === 0))) {
+        return (
+          <MovieList
+            list={
+              this.state.movieListResponse.length === 0 ?
+              this.state.discoverMoviesList :
+              this.state.movieListResponse
+            }
+            searchTerm={this.state.searchTerm}
+            genres={this.state.genres}
+            displayMode={
+              this.state.movieListResponse.length === 0 ?
+              'discover' :
+              'search'
+            }
+          />
+        );
+      }
+    } else {
+      return (
+        <p>LOADING</p>
+      );
+    }
+    return undefined;
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ isLoading: true });
     this.props.history.push(`/${this.state.searchTerm}`);
   }
 
   handleSearchBarChange(e) {
     this.setState({ searchTerm: e.target.value });
   }
+
 
   render() {
     return (
@@ -84,23 +120,7 @@ class MainView extends Component {
             />
           </form>
         </div>
-        {(!(this.state.discoverMoviesList.length === 0) ||
-          !(this.state.movieListResponse.length === 0)) && (
-          <MovieList
-            list={
-              this.state.movieListResponse.length === 0 ?
-              this.state.discoverMoviesList :
-              this.state.movieListResponse
-            }
-            searchTerm={this.state.searchTerm}
-            genres={this.state.genres}
-            displayMode={
-              this.state.movieListResponse.length === 0 ?
-              'discover' :
-              'search'
-            }
-          />
-        )}
+        {this.getMovieList()}
       </div>
     );
   }
