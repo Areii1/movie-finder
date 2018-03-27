@@ -4,18 +4,14 @@
   color: black;
 }
 
-.movie-genres-list {
-  list-style-type: none;
+.movie-genre {
   margin: 0;
+  color: gray;
 }
 
 .movie-list-item-title {
   margin: 10px 0 0 0;
   font-size: 1.4em;
-}
-
-.movie-genres-list {
-  color: gray;
 }
 
 .movie-poster {

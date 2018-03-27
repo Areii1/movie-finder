@@ -6,19 +6,7 @@ import './MovieListItem.css';
 const posterUrl = 'http://image.tmdb.org/t/p/w342';
 
 function MovieListItem(props) {
-  const genresList = props.movie.genre_ids.map((id) => {
-    if (props.genres[id]) {
-      return (
-        <li
-          key={id}
-          className="movie-genres-list-item"
-        >
-          {props.genres[id].name}
-        </li>
-      );
-    }
-    return null;
-  });
+  const firstGenreObject = props.genres.find(genre => genre.id === props.movie.genre_ids[0]);
 
   const listItem = (
     <Link
@@ -31,9 +19,10 @@ function MovieListItem(props) {
         alt="movie_poster"
       />
       <p className="movie-list-item-title">{props.movie.title}</p>
-      <ul className="movie-genres-list">
-        {genresList}
-      </ul>
+
+      {!!firstGenreObject && (
+        <p className="movie-genre">{firstGenreObject.name}</p>
+      )}
     </Link>
   );
 

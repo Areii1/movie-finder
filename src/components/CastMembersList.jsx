@@ -6,10 +6,9 @@ import QuestionMark from '../media/question-mark.png';
 const urlStart = 'https://image.tmdb.org/t/p/w92';
 
 function CastMembersList(props) {
-  console.log(props.movieDetails.credits);
-  const filteredList = props.movieDetails.credits.cast.filter((member, index) => (index < 15));
-  const profilePicFilter = filteredList.filter(member => !(member.profile_path === null));
-  const list = profilePicFilter.map((member, index) => (
+  const filteredList = props.movieDetails.credits.cast.filter((member, index) =>
+    (index < 15)).filter(member => (!!member.profile_path));
+  const list = filteredList.map((member, index) => (
     <li
       className={(index % 2 === 0) ? 'even' : 'odd'}
       key={member.credit_id}
