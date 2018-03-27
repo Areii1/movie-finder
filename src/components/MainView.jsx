@@ -97,8 +97,10 @@ class MainView extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ isLoading: true });
-    this.props.history.push(`/${this.state.searchTerm}`);
+    if (this.state.searchTerm !== this.props.match.params.searchTerm) {
+      this.props.history.push(`/${this.state.searchTerm}`);
+      this.setState({ isLoading: true });
+    }
   }
 
   handleSearchBarChange(e) {
