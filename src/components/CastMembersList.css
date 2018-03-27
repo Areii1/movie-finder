@@ -24,3 +24,7 @@ li > p {
   max-height: 120px;
   max-width: 80px;
 }
+
+.performer-link {
+  text-decoration: none;
+}
