@@ -7,16 +7,17 @@ import QuestionMark from '../media/question-mark.png';
 const urlStart = 'https://image.tmdb.org/t/p/w92';
 
 function CastMembersList(props) {
+  console.log(props.movieDetails.credits.cast);
   const filteredList = props.movieDetails.credits.cast.filter((member, index) =>
     (index < 15)).filter(member => (!!member.profile_path));
   const list = filteredList.map((member, index) => (
     <Link
-      to={`/Performer/${member.name}`}
+      to={`/Performer/${member.id}`}
       className="performer-link"
+      key={member.credit_id}
     >
       <li
         className={(index % 2 === 0) ? 'even' : 'odd'}
-        key={member.credit_id}
       >
         <img
           className="cast-member-picture"

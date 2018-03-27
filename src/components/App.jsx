@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/" component={MainView} />
         <Route exact path="/:searchTerm" component={MainView} />
         <Route exact path="/movie/:id" component={MovieView} />
-        <Route exact path="/performer/:performer" component={PerformerView} />
+        <Route exact path="/performer/:id" component={PerformerView} />
       </div>
     </Router>
   );
