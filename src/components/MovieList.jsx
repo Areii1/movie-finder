@@ -11,6 +11,7 @@ function MovieList(props) {
         movie={movie}
         genres={props.genres}
         searchTerm={props.searchTerm}
+        updateScroll={props.updateScroll}
       />
     </li>
   ));
@@ -29,6 +30,7 @@ function MovieList(props) {
 }
 
 MovieList.propTypes = {
+  updateScroll: PropTypes.func.isRequired,
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchTerm: PropTypes.string,

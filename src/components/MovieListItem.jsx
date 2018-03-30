@@ -11,6 +11,7 @@ function MovieListItem(props) {
   const listItem = (
     <Link
       to={`/movie/${props.movie.id}`}
+      onClick={() => props.updateScroll(window.scrollX, window.scrollY)}
       className="movie-list-item"
     >
       <img

@@ -48,6 +48,8 @@ class MainView extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.props.scrollPos, 'inside update');
+    window.scroll(this.props.scrollPos.x, this.props.scrollPos.y);
     if (this.props.match.params.searchTerm !== prevProps.match.params.searchTerm) {
       this.getMovieListResponseFromUrlParams();
     }
@@ -84,6 +86,7 @@ class MainView extends Component {
               'discover' :
               'search'
             }
+            updateScroll={this.props.updateScroll}
           />
         );
       }
@@ -107,7 +110,6 @@ class MainView extends Component {
     this.setState({ searchTerm: e.target.value });
   }
 
-
   render() {
     return (
       <div className="container">
@@ -129,6 +131,11 @@ class MainView extends Component {
 }
 
 MainView.propTypes = {
+  updateScroll: PropTypes.func.isRequired,
+  scrollPos: PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,

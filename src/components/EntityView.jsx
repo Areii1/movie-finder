@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import apikey from '../apikey';
@@ -20,7 +19,6 @@ class EntityView extends Component {
 
   componentWillMount() {
     window.scroll(0, 0);
-    console.log(this);
     const { id: entityId } = this.props.match.params;
     const { entity: entityType } = this.props.match.params;
     this.getEntityDetails(entityType, entityId);
@@ -38,14 +36,17 @@ class EntityView extends Component {
       method: 'get',
       url: `https://api.themoviedb.org/3/${entity}/${id}?api_key=${apikey}&language=en-US&append_to_response=videos,credits`,
     }).then((response) => {
-      (entity === 'movie') ? this.setState({
-        movieDetails: response.data,
-        entityType: 'movie'
-      }) :
-      this.setState({
-        personInfo: response.data,
-        entityType: 'person'
-      });
+      if (entity === 'movie') {
+        this.setState({
+          movieDetails: response.data,
+          entityType: entity,
+        });
+      } else if (entity === 'person') {
+        this.setState({
+          personInfo: response.data,
+          entityType: entity,
+        });
+      }
     });
   }
 
