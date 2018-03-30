@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import apikey from '../apikey';
@@ -18,12 +19,15 @@ class EntityView extends Component {
   }
 
   componentWillMount() {
+    window.scroll(0, 0);
+    console.log(this);
     const { id: entityId } = this.props.match.params;
     const { entity: entityType } = this.props.match.params;
     this.getEntityDetails(entityType, entityId);
   }
 
   componentDidUpdate(prevProps) {
+    window.scroll(0, 0);
     if (this.props.match.params.entity !== prevProps.match.params.entity) {
       this.getEntityDetails(this.props.match.params.entity, this.props.match.params.id);
     }
