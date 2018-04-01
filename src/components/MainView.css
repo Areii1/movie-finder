@@ -1,16 +1,98 @@
-.main-view-header {
+:root {
+  --mainViewBgColor: rgb(46, 41, 58);
+}
+
+.main-view-header-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.main-view-header-item {
+  color: white;
+}
+
+.main-view-searchbar {
+
+}
+
+.main-view-content-wrapper {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-view-trending {
+  height: 700px;
+}
+
+.main-view-trending-info {
+  background: linear-gradient(to right,rgba(46, 41, 58, 0.7), var(--mainViewBgColor));
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  padding-left: 50px;
 }
 
-.main-view-title {
-  margin-top: 20px;
+.trending-label {
+  margin: 0;
+  letter-spacing: 3px;
+  font-size: 0.9em;
 }
 
-.main-view-search-bar {
-  padding: 10px;
-  margin: 20px 0 0 50px;
-  background-color: rgba(46,74,117, 0.3);
-  border-radius: 10px;
-  font-size: 1.2em;
-  font-family: 'Bree Serif' , serif;
+.trending-title {
+  font-size: 3em;
+  font-weight: 700;
+  margin: 20px 0;
 }
+
+.trending-genre-runtime {
+  margin: 0;
+  letter-spacing: 2px;
+  font-size: 0.9em;
+}
+
+.trending-buttons {
+  margin-top: 45px;
+}
+
+.trending-button {
+  padding: 15px 30px;
+  margin-right: 15px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+}
+
+.watch-trailer-btn {
+  background: #795AD3;
+}
+
+.more-info-btn {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.main-view-browsing-options {
+  background: var(--mainViewBgColor);
+  height: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* .main-view-browsing-options-item {
+  width: 200px;
+  height: 50px;
+  border: 1px solid pink;
+} */

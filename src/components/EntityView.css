@@ -1,8 +1,12 @@
 body {
 	margin: 0;
 	background-color: white;
-	font-family: 'Bree Serif' , serif;
 	line-height: 200%;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+button {
+	  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .entity-img-section-wrapper {
@@ -13,7 +17,6 @@ body {
 }
 
 .entity-img-section-gradient {
-	content: '';
 	position: absolute;
 	top: 0;
 	right: 0;

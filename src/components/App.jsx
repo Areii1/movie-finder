@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      mainViewScrollPos: { x: 0, y: 0 },
+      mainViewYScrollPos: 0,
     };
 
     this.updateMainViewScrollPos = this.updateMainViewScrollPos.bind(this);
@@ -17,7 +17,7 @@ class App extends Component {
 
   updateMainViewScrollPos(xPos, yPos) {
     this.setState({
-      mainViewScrollPos: { x: xPos, y: yPos },
+      mainViewYScrollPos: { x: xPos, y: yPos },
     });
   }
 
@@ -32,7 +32,7 @@ class App extends Component {
               <MainView
                 {...props}
                 updateScroll={this.updateMainViewScrollPos}
-                scrollPos={this.state.mainViewScrollPos}
+                scrollPos={this.state.mainViewYScrollPos}
                 hello={this.hello}
               />
             )}
@@ -44,7 +44,7 @@ class App extends Component {
               <MainView
                 {...props}
                 updateScroll={this.updateMainViewScrollPos}
-                scrollPos={this.state.mainViewScrollPos}
+                scrollPos={this.state.mainViewYScrollPos}
                 hello={this.hello}
               />
             )}

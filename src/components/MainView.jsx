@@ -14,7 +14,7 @@ class MainView extends Component {
       searchTerm: '',
       movieListResponse: [],
       genres: [],
-      discoverMoviesList: [],
+      discoverMoviesList: null,
       isLoading: true,
     };
 
@@ -97,7 +97,7 @@ class MainView extends Component {
   }
 
   scrollAfterDataReceived() {
-    window.scroll(0, this.props.scrollPos.y);
+    window.scroll(0, this.props.scrollPos);
     this.props.updateScroll(0, 0);
   }
 
@@ -114,20 +114,58 @@ class MainView extends Component {
   }
 
   render() {
+    const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
-      <div className="container">
-        <div className="main-view-header">
-          <h1 className="main-view-title">MOVIE-FINDER</h1>
-          <form className="main-view-search-bar-field" onSubmit={event => this.handleSubmit(event)}>
-            <input
-              className="main-view-search-bar"
-              type="search"
-              value={this.state.searchTerm}
-              onChange={event => this.handleSearchBarChange(event)}
-            />
-          </form>
+      <div className="main-view-wrapper">
+        <div className="main-view-header-wrapper">
+          <div className="main-view-header-item">
+            <p>movie</p>
+          </div>
+          <div className="main-view-searchbar main-view-header-item">
+            <form
+              className="main-view-search-bar-field"
+              onSubmit={event => this.handleSubmit(event)}
+            >
+              <input
+                className="main-view-search-bar"
+                type="search"
+                value={this.state.searchTerm}
+                onChange={event => this.handleSearchBarChange(event)}
+              />
+            </form>
+          </div>
         </div>
-        {this.getMovieList()}
+        {this.state.discoverMoviesList && (
+          <div className="main-view-content-wrapper">
+            <div
+              className="main-view-trending"
+              style={{
+                background:
+                `url(${backdropHeaderUrl + this.state.discoverMoviesList[3].backdrop_path}) center/cover no-repeat`
+              }}
+            >
+              <div className="main-view-trending-info">
+                <p className="trending-label">TRENDING</p>
+                <h2 className="trending-title">{this.state.discoverMoviesList[3].title.toUpperCase()}</h2>
+                <p className="trending-genre-runtime">ACTION, ADVENTURE, FANTASY • 2H 21MIN</p>
+                <div className="trending-buttons">
+                  <button className="trending-button watch-trailer-btn">WATCH TRAILER</button>
+                  <button className="trending-button more-info-btn">MORE INFO</button>
+                </div>
+              </div>
+            </div>
+            <div className="main-view-browsing-options">
+              <div className="main-view-browsing-options-item most-popular">
+              </div>
+              <div className="main-view-browsing-options-item new-releases">
+              </div>
+              <div className="main-view-browsing-options-item based-on-actor">
+              </div>
+              <div className="main-view-browsing-options-item browse-movies">
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -135,10 +173,7 @@ class MainView extends Component {
 
 MainView.propTypes = {
   updateScroll: PropTypes.func.isRequired,
-  scrollPos: PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-  }).isRequired,
+  scrollPos: PropTypes.number.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
