@@ -40,7 +40,7 @@ class MainView extends Component {
         this.setState({
           discoverMoviesList: response.data.results,
           isLoading: false,
-        });
+        }, () => this.scrollAfterDataReceived());
       });
     } else {
       this.getMovieListResponseFromUrlParams();
@@ -48,8 +48,6 @@ class MainView extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.scrollPos, 'inside update');
-    window.scroll(this.props.scrollPos.x, this.props.scrollPos.y);
     if (this.props.match.params.searchTerm !== prevProps.match.params.searchTerm) {
       this.getMovieListResponseFromUrlParams();
     }
@@ -64,7 +62,7 @@ class MainView extends Component {
         movieListResponse: response.data.results,
         searchTerm: this.props.match.params.searchTerm,
         isLoading: false,
-      });
+      }, () => this.scrollAfterDataReceived());
     });
   }
 
@@ -96,6 +94,11 @@ class MainView extends Component {
       );
     }
     return undefined;
+  }
+
+  scrollAfterDataReceived() {
+    window.scroll(0, this.props.scrollPos.y);
+    this.props.updateScroll(0, 0);
   }
 
   handleSubmit(e) {
