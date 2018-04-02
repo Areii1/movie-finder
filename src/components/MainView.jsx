@@ -112,6 +112,15 @@ class MainView extends Component {
     return undefined;
   }
 
+  getGenre(num) {
+    console.log(this.state.discoverMoviesList[0].genre_ids.length);
+    if (this.state.discoverMoviesList[0].genre_ids.length - 1 >= num) {
+      return this.state.genres.find(genre =>
+        genre.id === this.state.discoverMoviesList[0].genre_ids[num]).name.toUpperCase();
+    }
+    return '';
+  }
+
   scrollAfterDataReceived() {
     window.scroll(0, this.props.scrollPos);
     this.props.updateScroll(0);
@@ -130,14 +139,15 @@ class MainView extends Component {
   }
 
   render() {
+    console.log(this.state.discoverMoviesList);
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div className="main-view-wrapper">
         <div className="main-view-header-wrapper">
-          <div className="main-view-header-item">
-            <p>movie</p>
+          <div>
+            <h2 className="main-view-header-headline">MOVIES</h2>
           </div>
-          <div className="main-view-searchbar main-view-header-item">
+          <div className="main-view-header-searchbar">
             <form
               className="main-view-search-bar-field"
               onSubmit={event => this.handleSubmit(event)}
@@ -157,18 +167,22 @@ class MainView extends Component {
               className="main-view-trending"
               style={{
                 background:
-                `url(${backdropHeaderUrl + this.state.discoverMoviesList[3].backdrop_path}) center/cover no-repeat`,
+                `url(${backdropHeaderUrl + this.state.discoverMoviesList[0].backdrop_path}) center/cover no-repeat`,
               }}
             >
               <div className="main-view-trending-info">
-                <p className="trending-label">TRENDING</p>
-                <h2 className="trending-title">
-                  {this.state.discoverMoviesList[3].title.toUpperCase()}
-                </h2>
-                <p className="trending-genre-runtime">ACTION, ADVENTURE, FANTASY • 2H 21MIN</p>
-                <div className="trending-buttons">
-                  <button className="trending-button watch-trailer-btn">WATCH TRAILER</button>
-                  <button className="trending-button more-info-btn">MORE INFO</button>
+                <div className="main-view-trending-info-content-wrapper">
+                  <p className="trending-label">TRENDING</p>
+                  <h2 className="trending-title">
+                    {this.state.discoverMoviesList[0].title.toUpperCase()}
+                  </h2>
+                  <p className="trending-genre-runtime">
+                    {this.getGenre(0)}, {this.getGenre(1)}, {this.getGenre(2)} •
+                  </p>
+                  <div className="trending-buttons">
+                    <button className="trending-button watch-trailer-btn">WATCH TRAILER</button>
+                    <button className="trending-button more-info-btn">MORE INFO</button>
+                  </div>
                 </div>
               </div>
             </div>
