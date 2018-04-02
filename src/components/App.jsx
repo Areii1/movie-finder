@@ -3,6 +3,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import MainView from './MainView';
 import EntityView from './EntityView';
 import './Global.css';
+import SearchView from './SearchView';
 
 class App extends Component {
   constructor(props) {
@@ -33,23 +34,11 @@ class App extends Component {
                 {...props}
                 updateScroll={this.updateMainViewScrollPos}
                 scrollPos={this.state.mainViewYScrollPos}
-                hello={this.hello}
               />
             )}
           />
-          <Route
-            exact
-            path="/:searchTerm"
-            render={props => (
-              <MainView
-                {...props}
-                updateScroll={this.updateMainViewScrollPos}
-                scrollPos={this.state.mainViewYScrollPos}
-                hello={this.hello}
-              />
-            )}
-          />
-          <Route exact path="/:entity/:id" component={EntityView} />
+          <Route path="/search/:searchTerm" component={SearchView} />
+          <Route path="/entity/:entity/:id" component={EntityView} />
         </div>
       </Router>
     );

@@ -70,10 +70,6 @@ class EntityView extends Component {
     return this.state.movieDetails.release_date.slice(0, 4);
   }
 
-  getTrailerLink() {
-    return this.state.movieDetails.videos ? `https://www.youtube.com/watch?v=${this.state.movieDetails.videos.results[0].key}` : 'not found';
-  }
-
   render() {
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     const backdropPosterUrl = 'https://image.tmdb.org/t/p/w342';
@@ -97,8 +93,8 @@ class EntityView extends Component {
                     MOVIE-FINDER
                   </h1>
                   <div className="entity-title-item">
-                    {this.state.entityType === 'movie' && (
-                      <a target="_blank" href={this.getTrailerLink()}>
+                    {this.state.entityType === 'movie' && this.state.movieDetails.videos.results.length > 0 && (
+                      <a target="_blank" href={`https://www.youtube.com/watch?v=${this.state.movieDetails.videos.results[0].key}`}>
                         <img
                           className="play-button"
                           src={playButton}

@@ -1,0 +1,13 @@
+body {
+  background: var(--mainViewBgColor);
+}
+
+.search-view-wrapper {
+  margin: auto;
+  width: 1000px;
+  border: 1px solid red,
+}
+
+.search-view-search-bar-field {
+  border: 1px solid red;
+}
