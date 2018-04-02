@@ -42,18 +42,14 @@ class MainView extends Component {
   }
 
   getMainViewDiscoverList() {
-    if (!this.state.isLoading) {
-      if (!(this.state.discoverMoviesList.length === 0)) {
-        return (
-          <MainViewDiscoverMovieList list={this.state.discoverMoviesList} />
-        );
-      }
-    } else {
+    if (!this.state.isLoading && this.state.discoverMoviesList.length > 0) {
       return (
-        <p>LOADING</p>
+        <MainViewDiscoverMovieList list={this.state.discoverMoviesList} />
       );
     }
-    return undefined;
+    return (
+      <p>LOADING</p>
+    );
   }
 
   scrollAfterDataReceived() {
