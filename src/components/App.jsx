@@ -15,9 +15,9 @@ class App extends Component {
     this.updateMainViewScrollPos = this.updateMainViewScrollPos.bind(this);
   }
 
-  updateMainViewScrollPos(xPos, yPos) {
+  updateMainViewScrollPos(yPos) {
     this.setState({
-      mainViewYScrollPos: { x: xPos, y: yPos },
+      mainViewYScrollPos: yPos,
     });
   }
 

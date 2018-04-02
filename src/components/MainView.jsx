@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import apikey from '../apikey';
-import MovieList from './MovieList';
+import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
+import RegularMovieList from './RegularMovieList';
 import './MainView.css';
 
 const language = 'en-us';
@@ -71,7 +72,7 @@ class MainView extends Component {
       if ((!(this.state.discoverMoviesList.length === 0) ||
       !(this.state.movieListResponse.length === 0))) {
         return (
-          <MovieList
+          <RegularMovieList
             list={
               this.state.movieListResponse.length === 0 ?
               this.state.discoverMoviesList :
@@ -96,9 +97,24 @@ class MainView extends Component {
     return undefined;
   }
 
+  getMainViewDiscoverList() {
+    if (!this.state.isLoading) {
+      if (!(this.state.discoverMoviesList.length === 0)) {
+        return (
+          <MainViewDiscoverMovieList list={this.state.discoverMoviesList} />
+        );
+      }
+    } else {
+      return (
+        <p>LOADING</p>
+      );
+    }
+    return undefined;
+  }
+
   scrollAfterDataReceived() {
     window.scroll(0, this.props.scrollPos);
-    this.props.updateScroll(0, 0);
+    this.props.updateScroll(0);
   }
 
   handleSubmit(e) {
@@ -141,12 +157,14 @@ class MainView extends Component {
               className="main-view-trending"
               style={{
                 background:
-                `url(${backdropHeaderUrl + this.state.discoverMoviesList[3].backdrop_path}) center/cover no-repeat`
+                `url(${backdropHeaderUrl + this.state.discoverMoviesList[3].backdrop_path}) center/cover no-repeat`,
               }}
             >
               <div className="main-view-trending-info">
                 <p className="trending-label">TRENDING</p>
-                <h2 className="trending-title">{this.state.discoverMoviesList[3].title.toUpperCase()}</h2>
+                <h2 className="trending-title">
+                  {this.state.discoverMoviesList[3].title.toUpperCase()}
+                </h2>
                 <p className="trending-genre-runtime">ACTION, ADVENTURE, FANTASY • 2H 21MIN</p>
                 <div className="trending-buttons">
                   <button className="trending-button watch-trailer-btn">WATCH TRAILER</button>
@@ -155,14 +173,7 @@ class MainView extends Component {
               </div>
             </div>
             <div className="main-view-browsing-options">
-              <div className="main-view-browsing-options-item most-popular">
-              </div>
-              <div className="main-view-browsing-options-item new-releases">
-              </div>
-              <div className="main-view-browsing-options-item based-on-actor">
-              </div>
-              <div className="main-view-browsing-options-item browse-movies">
-              </div>
+              {this.getMainViewDiscoverList()}
             </div>
           </div>
         )}

@@ -1,4 +1,4 @@
-.movie-list {
+.regular-movie-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -6,6 +6,6 @@
   padding: 0;
 }
 
-.mode-of-list {
+.regular-mode-of-list {
   font-size: 2em;
 }

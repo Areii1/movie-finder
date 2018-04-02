@@ -1,0 +1,11 @@
+.main-view-movie-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding: 150px 150px 0 0;
+}
+
+.main-view-mode-of-list {
+  font-size: 2em;
+}
