@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './SearchMovieListItem.css';
 
@@ -17,6 +16,7 @@ function SearchMovieListItem(props) {
         alt="movie_poster"
       />
       <p className="search-movie-list-item-title">{props.movie.title}</p>
+      <p className="search-movie-list-item-release-year">{props.movie.release_date.slice(0, 4)}</p>
     </Link>
   );
 

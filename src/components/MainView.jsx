@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
 import './MainView.css';
+import SearchIcon from '../media/search-icon.png';
 
 const language = 'en-us';
 class MainView extends Component {
@@ -11,33 +12,33 @@ class MainView extends Component {
     super(props);
 
     this.state = {
-      searchTerm: '',
       genres: [],
       discoverMoviesList: null,
       isLoading: true,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
-    axios({
+    const genrePromise = axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=${language}`,
-    }).then((response) => {
-      this.setState({
-        genres: response.data.genres,
-      });
     });
 
-    axios({
+
+    const discoverPromise = axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
-    }).then((response) => {
+    });
+
+
+    Promise.all([genrePromise, discoverPromise]).then((values) => {
       this.setState({
-        discoverMoviesList: response.data.results,
+        genres: values[0].data.genres,
+        discoverMoviesList: values[1].data.results,
         isLoading: false,
-      }, () => this.scrollAfterDataReceived());
+      });
     });
   }
 
@@ -52,21 +53,14 @@ class MainView extends Component {
     );
   }
 
-  scrollAfterDataReceived() {
-    window.scroll(0, this.props.scrollPos);
-    this.props.updateScroll(0);
+  handleClick() {
+    this.props.history.push('/search');
+    this.setState({ isLoading: true });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.searchTerm !== this.props.match.params.searchTerm) {
-      this.props.history.push(`/search/${this.state.searchTerm}`);
-      this.setState({ isLoading: true });
-    }
-  }
-
-  handleSearchBarChange(e) {
-    this.setState({ searchTerm: e.target.value });
+  handleKeyDown() {
+    this.props.history.push('/search');
+    this.setState({ isLoading: true });
   }
 
   renderFeatureMovieGenres() {
@@ -85,18 +79,16 @@ class MainView extends Component {
           <div>
             <h2 className="main-view-header-headline">MOVIES</h2>
           </div>
-          <div className="main-view-header-searchbar">
-            <form
-              className="main-view-search-bar-field"
-              onSubmit={event => this.handleSubmit(event)}
-            >
-              <input
-                className="main-view-search-bar"
-                type="search"
-                value={this.state.searchTerm}
-                onChange={event => this.handleSearchBarChange(event)}
-              />
-            </form>
+          <div
+            className="main-view-header-searchbar"
+          >
+            <img
+              onClick={this.handleClick}
+              onKeyDown={this.handleKeyDown}
+              className="main-view-search-icon"
+              src={SearchIcon}
+              alt="Search icon"
+            />
           </div>
         </div>
         {this.state.discoverMoviesList && (
@@ -135,15 +127,10 @@ class MainView extends Component {
 }
 
 MainView.propTypes = {
-  updateScroll: PropTypes.func.isRequired,
-  scrollPos: PropTypes.number.isRequired,
+  // updateScroll: PropTypes.func.isRequired,
+  // scrollPos: PropTypes.number.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      searchTerm: PropTypes.string,
-    }),
   }).isRequired,
 };
 

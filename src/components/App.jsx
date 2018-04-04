@@ -37,6 +37,7 @@ class App extends Component {
               />
             )}
           />
+          <Route exact path="/search" component={SearchView} />
           <Route path="/search/:searchTerm" component={SearchView} />
           <Route path="/entity/:entity/:id" component={EntityView} />
         </div>

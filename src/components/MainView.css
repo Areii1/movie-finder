@@ -23,6 +23,16 @@
   margin: 30px 0 0 80px;
 }
 
+.main-view-search-icon {
+  margin-top: -5px;
+
+  height: 40px;
+}
+
+.main-view-search-icon:hover {
+  cursor: pointer;
+}
+
 .main-view-content-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.5fr;

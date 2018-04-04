@@ -1,16 +1,16 @@
 .search-movie-list-item {
   text-decoration: none;
-  color: black;
-}
-
-.search-movie-genre {
-  margin: 0;
-  color: gray;
+  color: white;
 }
 
 .search-movie-list-item-title {
   margin: 10px 0 0 0;
-  font-size: 1.4em;
+  font-size: 1.2em;
+}
+
+.search-movie-list-item-release-year {
+  margin: 0;
+  color: lightgray;
 }
 
 .search-movie-poster {

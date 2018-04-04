@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import SearchMovieList from './SearchMovieList';
 import './SearchView.css';
@@ -18,7 +19,11 @@ class SearchView extends Component {
   }
 
   componentWillMount() {
-    this.getMovieListResponseFromUrlParams();
+    if (this.props.match.params.searchTerm) {
+      this.getMovieListResponseFromUrlParams();
+    } else {
+      this.setState({ isLoading: false });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -89,5 +94,16 @@ class SearchView extends Component {
     );
   }
 }
+
+SearchView.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      searchTerm: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default SearchView;

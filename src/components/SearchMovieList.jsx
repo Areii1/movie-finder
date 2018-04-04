@@ -17,4 +17,8 @@ function SearchMovieList(props) {
   );
 }
 
+SearchMovieList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object),
+};
+
 export default SearchMovieList;

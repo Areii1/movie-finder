@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './CastMembersList.css';
-import QuestionMark from '../media/question-mark.png';
 
 const urlStart = 'https://image.tmdb.org/t/p/w92';
 
@@ -20,7 +19,7 @@ function CastMembersList(props) {
       >
         <img
           className="cast-member-picture"
-          src={(member.profile_path) ? urlStart + member.profile_path : QuestionMark}
+          src={urlStart + member.profile_path}
           alt={member.name}
         />
         <p className="cast-member-name">{member.name}</p>

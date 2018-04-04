@@ -11,5 +11,6 @@ module.exports = {
             "specialLink": [ "to" ],
         }],
         'react/require-default-props': false,
+        'jsx-a11y/no-noninteractive-element-interactions': false,
     }
 }
