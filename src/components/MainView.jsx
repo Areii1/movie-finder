@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
 import './MainView.css';
-import SearchIcon from '../media/search-icon.png';
+import SearchIcon from '../media/ios-search.svg';
 
 const language = 'en-us';
 class MainView extends Component {
@@ -26,20 +26,19 @@ class MainView extends Component {
       url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=${language}`,
     });
 
-
     const discoverPromise = axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
     });
 
-
-    Promise.all([genrePromise, discoverPromise]).then((values) => {
-      this.setState({
-        genres: values[0].data.genres,
-        discoverMoviesList: values[1].data.results,
-        isLoading: false,
+    axios.all([genrePromise, discoverPromise])
+      .then(([genreResponse, discoverResponse]) => {
+        this.setState({
+          genres: genreResponse.data.genres,
+          discoverMoviesList: discoverResponse.data.results,
+          isLoading: false,
+        });
       });
-    });
   }
 
   getMainViewDiscoverList() {
