@@ -3,9 +3,9 @@ body {
 }
 
 .search-view-wrapper {
-  margin: auto;
   width: 1000px;
   color: white;
+  margin: 70px auto 0 auto;
 }
 
 .search-view-header {
@@ -26,4 +26,8 @@ body {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   outline-color: rgba(255, 255, 255, 0.7);
+}
+
+.search-view-loading {
+  text-align: center;
 }

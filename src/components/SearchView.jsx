@@ -33,6 +33,7 @@ class SearchView extends Component {
   }
 
   getMovieListResponseFromUrlParams() {
+    this.setState({ isLoading: true });
     axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-us&query=${this.props.match.params.searchTerm}&page=1&include_adult=true`,
@@ -46,18 +47,9 @@ class SearchView extends Component {
   }
 
   getMovieList() {
-    if (!this.state.isLoading) {
-      if (!(this.state.movieListResponse.length === 0)) {
-        return (
-          <SearchMovieList list={this.state.movieListResponse} />
-        );
-      }
-    } else {
-      return (
-        <p>LOADING</p>
-      );
-    }
-    return undefined;
+    return this.state.isLoading ?
+      <p className="search-view-loading">LOADING</p> :
+      <SearchMovieList list={this.state.movieListResponse} />;
   }
 
   handleSubmit(e) {
@@ -82,6 +74,7 @@ class SearchView extends Component {
             <input
               className="search-view-search-bar"
               type="search"
+              placeholder="search movies"
               value={this.state.searchTerm}
               onChange={event => this.handleSearchBarChange(event)}
             />

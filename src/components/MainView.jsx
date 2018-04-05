@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
 import './MainView.css';
-import SearchIcon from '../media/ios-search.svg';
 
 const language = 'en-us';
 class MainView extends Component {
@@ -16,8 +15,6 @@ class MainView extends Component {
       discoverMoviesList: null,
       isLoading: true,
     };
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
@@ -52,16 +49,6 @@ class MainView extends Component {
     );
   }
 
-  handleClick() {
-    this.props.history.push('/search');
-    this.setState({ isLoading: true });
-  }
-
-  handleKeyDown() {
-    this.props.history.push('/search');
-    this.setState({ isLoading: true });
-  }
-
   renderFeatureMovieGenres() {
     // eslint-disable-next-line camelcase
     return this.state.discoverMoviesList[0].genre_ids.map(genre_id =>
@@ -74,22 +61,6 @@ class MainView extends Component {
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
       <div className="main-view-wrapper">
-        <div className="main-view-header-wrapper">
-          <div>
-            <h2 className="main-view-header-headline">MOVIES</h2>
-          </div>
-          <div
-            className="main-view-header-searchbar"
-          >
-            <img
-              onClick={this.handleClick}
-              onKeyDown={this.handleKeyDown}
-              className="main-view-search-icon"
-              src={SearchIcon}
-              alt="Search icon"
-            />
-          </div>
-        </div>
         {this.state.discoverMoviesList && (
           <div className="main-view-content-wrapper">
             <div
