@@ -4,13 +4,13 @@
 }
 
 .search-movie-list-item-title {
-  margin: 10px 0 0 0;
+  margin: 10px 0 5px 0;
   font-size: 1.2em;
 }
 
 .search-movie-list-item-release-year {
   margin: 0;
-  color: lightgray;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-movie-poster {

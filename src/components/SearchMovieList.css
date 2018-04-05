@@ -2,6 +2,6 @@
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 50px;
+  grid-gap: 35px;
   padding: 0;
 }

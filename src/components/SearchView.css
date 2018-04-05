@@ -18,12 +18,12 @@ body {
   margin-top: 50px;
   width: 500px;
   height: 50px;
-  padding: 10px 40px;
-  border-radius: 30px;
+  padding: 10px 20px;
+  border-radius: 3px;
   border: none;
-
   font-size: 1.2em;
-  font-weight: 700;
-  background: #4c4c4c;
+  font-family: 'Roboto Condensed', sans-serif;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
+  outline-color: rgba(255, 255, 255, 0.7);
 }
