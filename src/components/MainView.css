@@ -46,25 +46,7 @@
 }
 
 .trending-buttons {
-  margin-top: 45px;
-}
-
-.trending-button {
-  padding: 15px 30px;
-  margin-right: 15px;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  letter-spacing: 1px;
-  font-size: 0.9em;
-}
-
-.watch-trailer-btn {
-  background: #795AD3;
-}
-
-.more-info-btn {
-  background: rgba(255, 255, 255, 0.2);
+  margin-top: 55px;
 }
 
 .main-view-browsing-options {

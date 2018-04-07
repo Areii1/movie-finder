@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
 import './MainView.css';
+import Button from './Button';
 
 const language = 'en-us';
 class MainView extends Component {
@@ -13,12 +14,13 @@ class MainView extends Component {
     this.state = {
       genres: [],
       discoverMoviesList: null,
+      trendingMovieDetails: null,
       isLoading: true,
     };
   }
 
   componentWillMount() {
-    const genrePromise = axios({
+    const genresPromise = axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=${language}`,
     });
@@ -28,14 +30,26 @@ class MainView extends Component {
       url: `https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
     });
 
-    axios.all([genrePromise, discoverPromise])
-      .then(([genreResponse, discoverResponse]) => {
+    axios.all([genresPromise, discoverPromise])
+      .then(([genresResponse, discoverResponse]) => {
         this.setState({
-          genres: genreResponse.data.genres,
+          genres: genresResponse.data.genres,
           discoverMoviesList: discoverResponse.data.results,
           isLoading: false,
         });
+        this.getTrendingMovieDetails();
       });
+  }
+
+  getTrendingMovieDetails() {
+    axios({
+      method: 'get',
+      url: `https://api.themoviedb.org/3/movie/${this.state.discoverMoviesList[0].id}?api_key=${apikey}&language=${language}&append_to_response=videos`,
+    }).then((response) => {
+      this.setState({
+        trendingMovieDetails: response.data,
+      });
+    });
   }
 
   getMainViewDiscoverList() {
@@ -59,6 +73,7 @@ class MainView extends Component {
 
   render() {
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
+    const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     return (
       <div className="main-view-wrapper">
         {this.state.discoverMoviesList && (
@@ -79,10 +94,20 @@ class MainView extends Component {
                   <p className="trending-genre-runtime">
                     {this.renderFeatureMovieGenres()}
                   </p>
+                  {this.state.trendingMovieDetails && (
                   <div className="trending-buttons">
-                    <button className="trending-button watch-trailer-btn">WATCH TRAILER</button>
-                    <button className="trending-button more-info-btn">MORE INFO</button>
+                    <Button
+                      type="primary"
+                      link={trailerLinkBase + this.state.trendingMovieDetails.videos.results[0].key}
+                      label="WATCH TRAILER"
+                    />
+                    <Button
+                      type="secondary"
+                      link=""
+                      label="MORE INFO"
+                    />
                   </div>
+                  )}
                 </div>
               </div>
             </div>

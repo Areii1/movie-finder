@@ -1,0 +1,17 @@
+.button {
+  padding: 15px 30px;
+  margin-right: 15px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+}
+
+.primary {
+  background: #795AD3;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.2);
+}

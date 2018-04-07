@@ -7,7 +7,7 @@ const posterUrl = 'http://image.tmdb.org/t/p/w342';
 function SearchMovieListItem(props) {
   const listItem = (
     <Link
-      to={`/entity/movie/${props.movie.id}`}
+      to={`/movie/${props.movie.id}`}
       className="search-movie-list-item"
     >
       <img
