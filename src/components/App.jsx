@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import MainView from './MainView';
-import EntityView from './EntityView';
 import './Global.css';
 import './App.css';
 import SearchView from './SearchView';
 import SearchIcon from '../media/ios-search.svg';
+import MovieView from './MovieView';
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class App extends Component {
           />
           <Route exact path="/search" component={SearchView} />
           <Route path="/search/:searchTerm" component={SearchView} />
-          <Route path="/movie/:id" component={EntityView} />
+          <Route path="/movie/:id" component={MovieView} />
         </div>
       </Router>
     );

@@ -1,0 +1,46 @@
+.movie-view-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.movie-view-details-side {
+  position: absolute;
+  top: 250px;
+  height: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  padding-left: 80px;
+  position: relative;
+}
+
+.movie-title {
+  font-size: 3em;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.movie-genre-runtime {
+  margin: 0;
+  letter-spacing: 2px;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.movie-buttons {
+  margin: 55px 0 100px 0;
+}
+
+.movie-overview-label {
+  letter-spacing: 2px;
+}
+.movie-overview-text {
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 25px;
+}
+
+.movie-view-img-side {
+  height: 1200px;
+}

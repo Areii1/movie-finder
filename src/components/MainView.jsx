@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import apikey from '../apikey';
 import MainViewDiscoverMovieList from './MainViewDiscoverMovieList';
 import './MainView.css';
@@ -75,7 +74,7 @@ class MainView extends Component {
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     return (
-      <div className="main-view-wrapper">
+      <div>
         {this.state.discoverMoviesList && (
           <div className="main-view-content-wrapper">
             <div
@@ -120,13 +119,5 @@ class MainView extends Component {
     );
   }
 }
-
-MainView.propTypes = {
-  // updateScroll: PropTypes.func.isRequired,
-  // scrollPos: PropTypes.number.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-};
 
 export default MainView;
