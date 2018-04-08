@@ -32,6 +32,7 @@
 
 .movie-buttons {
   margin: 55px 0 100px 0;
+  display: flex;
 }
 
 .movie-overview-label {

@@ -47,6 +47,7 @@
 
 .trending-buttons {
   margin-top: 55px;
+  display: flex;
 }
 
 .main-view-browsing-options {

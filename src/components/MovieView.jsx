@@ -25,10 +25,17 @@ class MovieView extends Component {
     });
   }
 
+  getFormattedRuntime() {
+    const hours = Math.floor(this.state.movieDetails.runtime / 60);
+    const minutes = this.state.movieDetails.runtime - (hours * 60);
+    return [`${hours.toString()}H`, `${minutes.toString()}MIN`].join(' ');
+  }
+
   renderMovieGenres() {
     return this.state.movieDetails.genres.map(genre =>
       genre.name.toUpperCase()).join(', ');
   }
+
 
   render() {
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
@@ -42,8 +49,8 @@ class MovieView extends Component {
                 <h2 className="movie-title">
                   {this.state.movieDetails.title.toUpperCase()}
                 </h2>
-                <p className="movie-genre-runtine">
-                  {this.renderMovieGenres()}
+                <p className="movie-genre-runtime">
+                  {`${this.renderMovieGenres()} • ${this.getFormattedRuntime()}`}
                 </p>
                 <div className="movie-buttons">
                   {this.state.movieDetails.videos.results.length > 0 && (

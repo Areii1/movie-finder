@@ -1,19 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Button.css';
 
 function Button(props) {
   return (
-    <a href={props.link} target="_blank">
-      <button className={`button ${props.type}`}>{props.label}</button>
-    </a>
+    <div>
+      {props.link && (
+        <a
+          href={props.link}
+          target="_blank"
+          className={`button ${props.type}`}
+        >
+          {props.label}
+        </a>
+      )}
+      {props.id && (
+        <Link
+          to={`/movie/${props.id}`}
+          className={`button ${props.type}`}
+        >
+          {props.label}
+        </Link>
+      )}
+    </div>
   );
 }
 
 Button.propTypes = {
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  id: PropTypes.number,
 };
 
 export default Button;

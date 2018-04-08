@@ -102,7 +102,7 @@ class MainView extends Component {
                     />
                     <Button
                       type="secondary"
-                      link=""
+                      id={this.state.discoverMoviesList[0].id}
                       label="MORE INFO"
                     />
                   </div>
