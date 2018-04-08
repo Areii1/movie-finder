@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './MovieView.css';
 import apikey from '../apikey';
 import Button from './Button';
@@ -15,7 +16,7 @@ class MovieView extends Component {
   }
 
   componentWillMount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
 
     axios({
       method: 'get',
@@ -36,18 +37,7 @@ class MovieView extends Component {
       genre.name.toUpperCase()).join(', ');
   }
 
-  getDirector() {
-    const director = this.state.movieDetails.credits.crew.find(member =>
-      (member.job === 'Director'));
-    if (director) {
-      return director.name;
-    }
-    return 'not found';
-  }
-
-
   render() {
-    console.log(this.state.movieDetails);
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
@@ -94,10 +84,7 @@ class MovieView extends Component {
               }}
             >
               <div className="movie-view-img-side-gradient">
-                <div className="movie-view-img-side-content-container">
-                  <h3>DIRECTED BY</h3>
-                  <p>{this.getDirector()}</p>
-                </div>
+                <div className="movie-view-img-side-content-container" />
               </div>
             </div>
           </div>
@@ -106,5 +93,13 @@ class MovieView extends Component {
     );
   }
 }
+
+MovieView.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieView;

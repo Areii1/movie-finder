@@ -44,9 +44,6 @@
   line-height: 25px;
 }
 
-.movie-view-img-side {
-}
-
 .movie-view-img-side-gradient {
   background: linear-gradient(to right,var(--mainViewBgColor), rgba(46, 41, 58, 0.7));
   height: 1000px;

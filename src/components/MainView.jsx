@@ -74,48 +74,46 @@ class MainView extends Component {
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     return (
-      <div>
-        {this.state.discoverMoviesList && (
-          <div className="main-view-content-wrapper">
-            <div
-              className="main-view-trending"
-              style={{
-                background:
-                `url(${backdropHeaderUrl + this.state.discoverMoviesList[0].backdrop_path}) center/cover no-repeat`,
-              }}
-            >
-              <div className="main-view-trending-info">
-                <div className="main-view-trending-info-content-wrapper">
-                  <p className="trending-label">TRENDING</p>
-                  <h2 className="trending-title">
-                    {this.state.discoverMoviesList[0].title.toUpperCase()}
-                  </h2>
-                  <p className="trending-genre-runtime">
-                    {this.renderFeatureMovieGenres()}
-                  </p>
-                  {this.state.trendingMovieDetails && (
-                  <div className="trending-buttons">
-                    <Button
-                      type="primary"
-                      link={trailerLinkBase + this.state.trendingMovieDetails.videos.results[0].key}
-                      label="WATCH TRAILER"
-                    />
-                    <Button
-                      type="secondary"
-                      id={this.state.discoverMoviesList[0].id}
-                      label="MORE INFO"
-                    />
-                  </div>
-                  )}
+      this.state.discoverMoviesList && (
+        <div className="main-view-content-wrapper">
+          <div
+            className="main-view-trending"
+            style={{
+              background:
+              `url(${backdropHeaderUrl + this.state.discoverMoviesList[0].backdrop_path}) center/cover no-repeat`,
+            }}
+          >
+            <div className="main-view-trending-info">
+              <div className="main-view-trending-info-content-wrapper">
+                <p className="trending-label">TRENDING</p>
+                <h2 className="trending-title">
+                  {this.state.discoverMoviesList[0].title.toUpperCase()}
+                </h2>
+                <p className="trending-genre-runtime">
+                  {this.renderFeatureMovieGenres()}
+                </p>
+                {this.state.trendingMovieDetails && (
+                <div className="trending-buttons">
+                  <Button
+                    type="primary"
+                    link={trailerLinkBase + this.state.trendingMovieDetails.videos.results[0].key}
+                    label="WATCH TRAILER"
+                  />
+                  <Button
+                    type="secondary"
+                    id={this.state.discoverMoviesList[0].id}
+                    label="MORE INFO"
+                  />
                 </div>
+                )}
               </div>
             </div>
-            <div className="main-view-browsing-options">
-              {this.getMainViewDiscoverList()}
-            </div>
           </div>
-        )}
-      </div>
+          <div className="main-view-browsing-options">
+            {this.getMainViewDiscoverList()}
+          </div>
+        </div>
+      )
     );
   }
 }
