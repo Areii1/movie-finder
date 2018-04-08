@@ -41,55 +41,54 @@ class MovieView extends Component {
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
-      <div>
-        {this.state.movieDetails && (
-          <div className="movie-view-wrapper">
-            <div className="movie-view-details-side">
-              <div className="movie-view-details-side-content-wrapper">
-                <h2 className="movie-title">
-                  {this.state.movieDetails.title.toUpperCase()}
-                </h2>
-                <p className="movie-genre-runtime">
-                  {`${this.renderMovieGenres()} • ${this.getFormattedRuntime()} • ${this.state.movieDetails.release_date.slice(0, 4)}`}
-                </p>
-                <div className="movie-buttons">
-                  {this.state.movieDetails.videos.results.length > 0 && (
-                    <Button
-                      type="primary"
-                      link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
-                      label="WATCH TRAILER"
-                    />
-                  )}
+      this.state.movieDetails ? (
+        <div className="movie-view-wrapper">
+          <div className="movie-view-details-side">
+            <div className="movie-view-details-side-content-wrapper">
+              <h2 className="movie-title">
+                {this.state.movieDetails.title.toUpperCase()}
+              </h2>
+              <p className="movie-genre-runtime">
+                {`${this.renderMovieGenres()} • ${this.getFormattedRuntime()} • ${this.state.movieDetails.release_date.slice(0, 4)}`}
+              </p>
+              <div className="movie-buttons">
+                {this.state.movieDetails.videos.results.length > 0 && (
                   <Button
-                    type="secondary"
-                    link={this.state.movieDetails.homepage}
-                    label="HOMEPAGE"
+                    type="primary"
+                    link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
+                    label="WATCH TRAILER"
                   />
-                </div>
-                <div className="movie-overview-item">
-                  <h3 className="movie-overview-label">OVERVIEW</h3>
-                  <p className="movie-overview-text">{this.state.movieDetails.overview}</p>
-                </div>
-                <div className="movie-cast-member-list">
-                  <p className="movie-cast-member-list-label">STARRING</p>
-                  <CastMembersList movieDetails={this.state.movieDetails} />
-                </div>
+                )}
+                <Button
+                  type="secondary"
+                  link={this.state.movieDetails.homepage}
+                  label="HOMEPAGE"
+                />
               </div>
-            </div>
-            <div
-              className="movie-view-img-side"
-              style={{
-                background:
-                `url(${backdropHeaderUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat`,
-              }}
-            >
-              <div className="movie-view-img-side-gradient">
-                <div className="movie-view-img-side-content-container" />
+              <div className="movie-overview-item">
+                <h3 className="movie-overview-label">OVERVIEW</h3>
+                <p className="movie-overview-text">{this.state.movieDetails.overview}</p>
+              </div>
+              <div className="movie-cast-member-list">
+                <p className="movie-cast-member-list-label">STARRING</p>
+                <CastMembersList movieDetails={this.state.movieDetails} />
               </div>
             </div>
           </div>
-        )}
-      </div>
+          <div
+            className="movie-view-img-side"
+            style={{
+              background:
+              `url(${backdropHeaderUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat`,
+            }}
+          >
+            <div className="movie-view-img-side-gradient">
+              <div className="movie-view-img-side-content-container" />
+            </div>
+          </div>
+        </div>
+      ) :
+        <p className="loading">LOADING</p>
     );
   }
 }
