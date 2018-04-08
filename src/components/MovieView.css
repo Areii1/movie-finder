@@ -1,7 +1,7 @@
 .movie-view-wrapper {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  height: 1200px;
+  height: 1000px;
 }
 
 .movie-view-details-side {
@@ -49,7 +49,7 @@
 
 .movie-view-img-side-content-container {
   background: linear-gradient(to right,var(--mainViewBgColor), rgba(46, 41, 58, 0.7));
-  height: 1200px;
+  height: 1000px;
 }
 
 .movie-cast-member-list-label {

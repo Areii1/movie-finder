@@ -8,7 +8,7 @@
 }
 
 .main-view-trending {
-  height: 1200px;
+  height: 1000px;
 }
 
 .main-view-trending-info {
@@ -52,5 +52,5 @@
 
 .main-view-browsing-options {
   background: var(--mainViewBgColor);
-  height: 1200px;
+  height: 1000px;
 }
