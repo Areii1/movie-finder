@@ -25,8 +25,12 @@ class MovieView extends Component {
     });
   }
 
+  renderMovieGenres() {
+    return this.state.movieDetails.genres.map(genre =>
+      genre.name.toUpperCase()).join(', ');
+  }
+
   render() {
-    console.log(this.state.movieDetails);
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     return (
@@ -38,21 +42,9 @@ class MovieView extends Component {
                 <h2 className="movie-title">
                   {this.state.movieDetails.title.toUpperCase()}
                 </h2>
-                {this.state.movieDetails.genres.length === 1 && (
-                  <p className="movie-genre-runtime">
-                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}`}
-                  </p>
-                )}
-                {this.state.movieDetails.genres.length === 2 && (
-                  <p className="movie-genre-runtime">
-                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}`}
-                  </p>
-                )}
-                {this.state.movieDetails.genres.length === 3 && (
-                  <p className="movie-genre-runtime">
-                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}, ${this.state.movieDetails.genres[2].name.toUpperCase()}`}
-                  </p>
-                )}
+                <p className="movie-genre-runtine">
+                  {this.renderMovieGenres()}
+                </p>
                 <div className="movie-buttons">
                   {this.state.movieDetails.videos.results.length > 0 && (
                     <Button

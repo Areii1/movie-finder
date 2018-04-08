@@ -1,11 +1,10 @@
 .movie-view-wrapper {
   display: grid;
-  
   grid-template-columns: 1fr 2fr;
+  height: 1200px;
 }
 
 .movie-view-details-side {
-  height: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +44,6 @@
 }
 
 .movie-view-img-side {
-  height: 1200px;
 }
 
 .movie-view-img-side-content-container {
