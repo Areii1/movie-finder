@@ -1,7 +1,7 @@
 .movie-view-wrapper {
   display: grid;
   
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 1fr 2fr;
 }
 
 .movie-view-details-side {
@@ -11,6 +11,11 @@
   justify-content: center;
   color: white;
   padding-left: 80px;
+}
+
+.movie-view-details-side-content-wrapper {
+  position: relative;
+  margin-right: -250px;
 }
 
 .movie-title {
@@ -46,4 +51,10 @@
 .movie-view-img-side-content-container {
   background: linear-gradient(to right,var(--mainViewBgColor), rgba(46, 41, 58, 0.7));
   height: 1200px;
+}
+
+.movie-cast-member-list-label {
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 70px 0 30px 0;
 }

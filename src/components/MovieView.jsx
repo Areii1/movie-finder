@@ -3,6 +3,7 @@ import axios from 'axios';
 import './MovieView.css';
 import apikey from '../apikey';
 import Button from './Button';
+import CastMembersList from './CastMembersList';
 
 class MovieView extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class MovieView extends Component {
 
   componentWillMount() {
     const id = this.props.match.params.id;
-    console.log(id);
 
     axios({
       method: 'get',
@@ -26,9 +26,9 @@ class MovieView extends Component {
   }
 
   render() {
+    console.log(this.state.movieDetails);
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
     const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
-    console.log(this.state.movieDetails, 'moviedetails');
     return (
       <div>
         {this.state.movieDetails && (
@@ -38,24 +38,42 @@ class MovieView extends Component {
                 <h2 className="movie-title">
                   {this.state.movieDetails.title.toUpperCase()}
                 </h2>
-                <p className="movie-genre-runtime">
-                  {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}`}
-                </p>
+                {this.state.movieDetails.genres.length === 1 && (
+                  <p className="movie-genre-runtime">
+                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}`}
+                  </p>
+                )}
+                {this.state.movieDetails.genres.length === 2 && (
+                  <p className="movie-genre-runtime">
+                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}`}
+                  </p>
+                )}
+                {this.state.movieDetails.genres.length === 3 && (
+                  <p className="movie-genre-runtime">
+                    {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}, ${this.state.movieDetails.genres[2].name.toUpperCase()}`}
+                  </p>
+                )}
                 <div className="movie-buttons">
-                  <Button
-                    type="primary"
-                    link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
-                    label="WATCH TRAILER"
-                  />
+                  {this.state.movieDetails.videos.results.length > 0 && (
+                    <Button
+                      type="primary"
+                      link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
+                      label="WATCH TRAILER"
+                    />
+                  )}
                   <Button
                     type="secondary"
-                    link=""
-                    label="MORE INFO"
+                    link={this.state.movieDetails.homepage}
+                    label="HOMEPAGE"
                   />
                 </div>
                 <div className="movie-overview-item">
                   <h3 className="movie-overview-label">OVERVIEW</h3>
                   <p className="movie-overview-text">{this.state.movieDetails.overview}</p>
+                </div>
+                <div className="movie-cast-member-list">
+                  <p className="movie-cast-member-list-label">STARRING</p>
+                  <CastMembersList movieDetails={this.state.movieDetails} />
                 </div>
               </div>
             </div>

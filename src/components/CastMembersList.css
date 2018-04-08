@@ -1,30 +1,17 @@
 ul {
+  display: flex;
   padding: 0;
-  margin-top: 50px;
+  margin: 0;
 }
 
-.even {
-  display: flex;
-  background-color: rgba(31,59,113, 0.2);
-}
-
-.odd {
-  display: flex;
-  background-color: white;
-}
-
-li > p {
-  width: 20%;
-  padding-right: 100px;
-  padding-left: 10px;
-  text-align: left;
+.cast-member-list-item {
+  list-style-type: none;
+  width: 130px;
+  text-align: center;
 }
 
 .cast-member-picture {
   max-height: 120px;
   max-width: 80px;
-}
-
-.person-link {
-  text-decoration: none;
+  border-radius: 80px;
 }
