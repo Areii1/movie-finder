@@ -1,19 +1,16 @@
 .movie-view-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  
+  grid-template-columns: 1fr 1.3fr;
 }
 
 .movie-view-details-side {
-  position: absolute;
-  top: 250px;
   height: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   color: white;
   padding-left: 80px;
-  position: relative;
 }
 
 .movie-title {
@@ -36,11 +33,17 @@
 .movie-overview-label {
   letter-spacing: 2px;
 }
+
 .movie-overview-text {
   color: rgba(255, 255, 255, 0.5);
   line-height: 25px;
 }
 
 .movie-view-img-side {
+  height: 1200px;
+}
+
+.movie-view-img-side-content-container {
+  background: linear-gradient(to right,var(--mainViewBgColor), rgba(46, 41, 58, 0.7));
   height: 1200px;
 }

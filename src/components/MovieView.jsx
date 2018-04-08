@@ -27,40 +27,49 @@ class MovieView extends Component {
 
   render() {
     const trailerLinkBase = 'https://www.youtube.com/watch?v=';
+    const backdropHeaderUrl = 'https://image.tmdb.org/t/p/original';
     console.log(this.state.movieDetails, 'moviedetails');
     return (
-      <div className="movie-view-wrapper">
+      <div>
         {this.state.movieDetails && (
-        <div>
-          <div className="movie-view-details-side">
-            <div className="movie-view-details-side-content-wrapper">
-              <h2 className="movie-title">
-                {this.state.movieDetails.title.toUpperCase()}
-              </h2>
-              <p className="movie-genre-runtime">
-                {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}`}
-              </p>
-              <div className="movie-buttons">
-                <Button
-                  type="primary"
-                  link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
-                  label="WATCH TRAILER"
-                />
-                <Button
-                  type="secondary"
-                  link=""
-                  label="MORE INFO"
-                />
+          <div className="movie-view-wrapper">
+            <div className="movie-view-details-side">
+              <div className="movie-view-details-side-content-wrapper">
+                <h2 className="movie-title">
+                  {this.state.movieDetails.title.toUpperCase()}
+                </h2>
+                <p className="movie-genre-runtime">
+                  {`${this.state.movieDetails.genres[0].name.toUpperCase()}, ${this.state.movieDetails.genres[1].name.toUpperCase()}`}
+                </p>
+                <div className="movie-buttons">
+                  <Button
+                    type="primary"
+                    link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
+                    label="WATCH TRAILER"
+                  />
+                  <Button
+                    type="secondary"
+                    link=""
+                    label="MORE INFO"
+                  />
+                </div>
+                <div className="movie-overview-item">
+                  <h3 className="movie-overview-label">OVERVIEW</h3>
+                  <p className="movie-overview-text">{this.state.movieDetails.overview}</p>
+                </div>
               </div>
-              <div className="movie-overview-item">
-                <h3 className="movie-overview-label">OVERVIEW</h3>
-                <p className="movie-overview-text">{this.state.movieDetails.overview}</p>
+            </div>
+            <div
+              className="movie-view-img-side"
+              style={{
+                background:
+                `url(${backdropHeaderUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat`,
+              }}
+            >
+              <div className="movie-view-img-side-content-container">
               </div>
             </div>
           </div>
-          <div className="movie-view-img-side">
-          </div>
-        </div>
         )}
       </div>
     );
