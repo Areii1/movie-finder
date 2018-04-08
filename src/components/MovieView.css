@@ -31,7 +31,7 @@
 }
 
 .movie-buttons {
-  margin: 55px 0 100px 0;
+  margin: 55px 0 80px 0;
   display: flex;
 }
 
@@ -47,9 +47,17 @@
 .movie-view-img-side {
 }
 
-.movie-view-img-side-content-container {
+.movie-view-img-side-gradient {
   background: linear-gradient(to right,var(--mainViewBgColor), rgba(46, 41, 58, 0.7));
   height: 1000px;
+}
+
+.movie-view-img-side-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  color: white;
 }
 
 .movie-cast-member-list-label {

@@ -36,6 +36,15 @@ class MovieView extends Component {
       genre.name.toUpperCase()).join(', ');
   }
 
+  getDirector() {
+    const director = this.state.movieDetails.credits.crew.find(member =>
+      (member.job === 'Director'));
+    if (director) {
+      return director.name;
+    }
+    return 'not found';
+  }
+
 
   render() {
     console.log(this.state.movieDetails);
@@ -84,7 +93,11 @@ class MovieView extends Component {
                 `url(${backdropHeaderUrl + this.state.movieDetails.backdrop_path}) center/cover no-repeat`,
               }}
             >
-              <div className="movie-view-img-side-content-container">
+              <div className="movie-view-img-side-gradient">
+                <div className="movie-view-img-side-content-container">
+                  <h3>DIRECTED BY</h3>
+                  <p>{this.getDirector()}</p>
+                </div>
               </div>
             </div>
           </div>

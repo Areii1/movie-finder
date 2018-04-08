@@ -12,9 +12,13 @@ function CastMembersList(props) {
       className="cast-member-list-item"
       key={member.id}
     >
-      <img
+      <div
         className="cast-member-picture"
-        src={urlStart + member.profile_path}
+        style={{
+          background:
+          `url(${urlStart + member.profile_path}) center/cover no-repeat`,
+        }}
+        // src={urlStart + member.profile_path}
         alt={member.name}
       />
       <p className="cast-member-name">{member.name}</p>

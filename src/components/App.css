@@ -1,10 +1,10 @@
 .navigation-wrapper {
   position: absolute;
   width: 100%;
-  top: 30;
-  left: 80px;
+  top: 30px;
+  left: 0;
   z-index: 1;
-  padding: 0;
+  padding-left: 80px;
   display: flex;
   align-items: center;
   font-family: 'Roboto Condensed', sans-serif;
