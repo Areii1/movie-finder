@@ -10,7 +10,7 @@ function Button(props) {
         <a
           href={props.link}
           target="_blank"
-          className={`button ${props.type}`}
+          className={`button ${props.type} ${props.className}`}
         >
           {props.label}
         </a>
@@ -28,6 +28,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
+  className: PropTypes.string,
   link: PropTypes.string,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

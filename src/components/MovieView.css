@@ -68,3 +68,32 @@
   color: white;
   margin-top: 100px;
 }
+
+.movie-view-trailer-button {
+  margin-right: 15px;
+}
+
+@media (max-width: 414px) {
+  .movie-view-details-side {
+    padding-left: 0; 
+  }
+  .movie-view-details-side-content-wrapper {
+    position: static;
+    margin-right: 0;
+  }
+  .movie-view-img-side {
+    display: none;
+  }
+  .movie-view-wrapper {
+    grid-template-columns: 1fr;
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+  .movie-buttons {
+    margin: 30px 0 50px 0;
+  }
+  .movie-cast-member-list-label {
+    margin: 70px 0 30px 0;
+    text-align: center;
+  }
+}

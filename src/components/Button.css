@@ -1,6 +1,5 @@
 .button {
   padding: 15px 30px;
-  margin-right: 15px;
   color: white;
   border: none;
   border-radius: 3px;
@@ -16,4 +15,10 @@
 
 .secondary {
   background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 414px) {
+  .button {
+    padding: 10px 25px;
+  }
 }

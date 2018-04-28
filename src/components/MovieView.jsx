@@ -54,6 +54,7 @@ class MovieView extends Component {
               <div className="movie-buttons">
                 {this.state.movieDetails.videos.results.length > 0 && (
                   <Button
+                    className="movie-view-trailer-button"
                     type="primary"
                     link={trailerLinkBase + this.state.movieDetails.videos.results[0].key}
                     label="WATCH TRAILER"

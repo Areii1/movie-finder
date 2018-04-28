@@ -55,17 +55,22 @@
   height: 1000px;
 }
 
+.main-view-trailer-button {
+  margin-right: 15px;
+}
+
 @media (max-width: 414px) {
   .main-view-content-wrapper {
     grid-template-columns: 1fr;
   }
   .main-view-trending-info {
-    padding: 20px;
+    background: linear-gradient(to bottom,rgba(46, 41, 58, 0.7), var(--mainViewBgColor));
+    padding: 0 20px;
   }
   .main-view-trending-info-content-wrapper {
-    top: 300px;
+    top: 200px;
   }
   .main-view-trending {
-    height: 800px;
+    height: 100vh;
   }
 }

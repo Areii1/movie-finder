@@ -95,6 +95,7 @@ class MainView extends Component {
                 {this.state.trendingMovieDetails && (
                 <div className="trending-buttons">
                   <Button
+                    className="main-view-trailer-button"
                     type="primary"
                     link={trailerLinkBase + this.state.trendingMovieDetails.videos.results[0].key}
                     label="WATCH TRAILER"

@@ -18,7 +18,6 @@ function CastMembersList(props) {
           background:
           `url(${urlStart + member.profile_path}) center/cover no-repeat`,
         }}
-        // src={urlStart + member.profile_path}
         alt={member.name}
       />
       <p className="cast-member-name">{member.name}</p>
