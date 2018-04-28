@@ -1,11 +1,12 @@
 .navigation-wrapper {
   position: absolute;
   width: 100%;
-  top: 30px;
+  top: 10px;
   left: 0;
   z-index: 1;
-  padding-left: 80px;
+  padding: 0 20px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   font-family: 'Roboto Condensed', sans-serif;
 }

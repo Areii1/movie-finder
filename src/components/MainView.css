@@ -55,7 +55,7 @@
   height: 1000px;
 }
 
-@media (max-width: 812px) {
+@media (max-width: 414px) {
   .main-view-content-wrapper {
     grid-template-columns: 1fr;
   }

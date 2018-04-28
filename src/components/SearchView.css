@@ -3,20 +3,20 @@ body {
 }
 
 .search-view-wrapper {
-  width: 1000px;
+  max-width: 1000px;
   color: white;
   margin: 70px auto 70px auto;
 }
 
 .search-view-header {
   height: 150px;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .search-view-search-bar {
   margin-top: 50px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 50px;
   padding: 10px 20px;
   border-radius: 3px;
@@ -26,8 +26,15 @@ body {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   outline-color: rgba(255, 255, 255, 0.7);
+  display: inline-block;
 }
 
 .search-view-loading {
   text-align: center;
+}
+
+@media (max-width: 414px) {
+  .search-view-search-bar-field {
+    padding: 0 20px;
+  }
 }

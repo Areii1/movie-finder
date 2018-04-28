@@ -5,3 +5,11 @@
   grid-gap: 35px;
   padding: 0;
 }
+
+@media (max-width: 414px) {
+  .search-movie-list {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 20px;
+    grid-gap: 20px;
+  }
+}
