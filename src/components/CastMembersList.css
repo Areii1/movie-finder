@@ -25,6 +25,6 @@ ul {
     align-items: center;
   }
   .cast-member-list-item {
-    margin: 0;
+    margin: 0 0 15px 0;
   }
 }
