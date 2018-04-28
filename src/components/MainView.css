@@ -54,3 +54,18 @@
   background: var(--mainViewBgColor);
   height: 1000px;
 }
+
+@media (max-width: 812px) {
+  .main-view-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .main-view-trending-info {
+    padding: 20px;
+  }
+  .main-view-trending-info-content-wrapper {
+    top: 300px;
+  }
+  .main-view-trending {
+    height: 800px;
+  }
+}
